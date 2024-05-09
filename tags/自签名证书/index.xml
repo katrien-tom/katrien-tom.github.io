@@ -64,7 +64,12 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> vaultwarden/server:latest
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="14-安装nginx">
+&lt;/div>&lt;h3 id="131-关闭新注册">
+&lt;a href="#131-%e5%85%b3%e9%97%ad%e6%96%b0%e6%b3%a8%e5%86%8c">#&lt;/a>
+1.3.1 关闭新注册
+&lt;/h3>&lt;pre>&lt;code>注册完管理员账号后进入/admin，将`Allow new signups`选项设置为false。
+&lt;/code>&lt;/pre>
+&lt;h2 id="14-安装nginx">
 &lt;a href="#14-%e5%ae%89%e8%a3%85nginx">#&lt;/a>
 1.4 安装nginx
 &lt;/h2>&lt;h3 id="141-生成自签名证书">
