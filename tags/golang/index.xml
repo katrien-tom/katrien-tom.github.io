@@ -180,9 +180,15 @@ RPC和GRPC基础知识
 &lt;li>两台物理机器在网络中要建立稳定可靠的通信连接。&lt;/li>
 &lt;li>两台服务器的通信协议的定义问题，即两台服务器上的程序如何识别对方的请求和返回结果。也就是说两台计算机必须都能够识别对方发来的信息，并且能够识别出其中的请求含义和返回含义，然后才能进行处理。这其实就是通信协议所要完成的工作。&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="E:%5cWebWorkspace%5cblogs%5ccontent%5cpost%5cgolang%5crpc-grpc-basic%5cassets%5c1-17170766784331.png"
+&lt;p>&lt;img src="https://blog.binggao.xyz/p/rpc-grpc-basic/assets/1.png"
+width="787"
+height="474"
+srcset="https://blog.binggao.xyz/p/rpc-grpc-basic/assets/1_hub224d8a852a81abc3c5b8a57f08bec18_186833_480x0_resize_box_3.png 480w, https://blog.binggao.xyz/p/rpc-grpc-basic/assets/1_hub224d8a852a81abc3c5b8a57f08bec18_186833_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="1"
+class="gallery-image"
+data-flex-grow="166"
+data-flex-basis="398px"
 >&lt;/p>
 &lt;p>在上述图中，通过1-10的步骤图解的形式，说明了RPC每一步的调用过程。具体描述为：&lt;/p>
 &lt;ul>
