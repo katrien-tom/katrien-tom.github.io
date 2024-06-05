@@ -1,10 +1,10 @@
 <!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="RPC和GRPC基础知识"><title>RPC和GRPC基础知识</title>
 <link rel=canonical href=https://blog.binggao.xyz/p/rpc-grpc-basic/><link rel=stylesheet href=/scss/style.min.a8f47317a9f46c1e65bca0d951ec2c4c458c9cd52902ff8d8538bdaf52c6d8a8.css><meta property='og:title' content="RPC和GRPC基础知识"><meta property='og:description' content="RPC和GRPC基础知识"><meta property='og:url' content='https://blog.binggao.xyz/p/rpc-grpc-basic/'><meta property='og:site_name' content='半夜酒的博客'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='golang'><meta property='article:tag' content='rpc'><meta property='article:tag' content='grpc'><meta property='article:published_time' content='2024-05-08T17:00:00+08:00'><meta property='article:modified_time' content='2024-05-08T17:00:00+08:00'><meta property='og:image' content='https://blog.binggao.xyz/img/golang.jpg'><meta name=twitter:title content="RPC和GRPC基础知识"><meta name=twitter:description content="RPC和GRPC基础知识"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content='https://blog.binggao.xyz/img/golang.jpg'></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><div id=article-toolbar style=position:sticky;top:5px;z-index:1000><a href=/ class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
-<span>返回</span></a></div><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#11-概念>1.1 概念</a></li><li><a href=#12-使用http来模拟rpc>1.2 使用Http来模拟RPC</a></li><li><a href=#13-rpc开发的四大要素>1.3 RPC开发的四大要素</a></li></ol><ol><li><a href=#21-go快速体验rpc>2.1 go快速体验RPC</a></li></ol></nav></div></section></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><a href=/p/rpc-grpc-basic/><img src=/img/golang.jpg loading=lazy alt="Featured image of post RPC和GRPC基础知识"></a></div><div class=article-details><header class=article-category><a href=/categories/golang/>Golang</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/rpc-grpc-basic/>RPC和GRPC基础知识</a></h2><h3 class=article-subtitle>RPC和GRPC基础知识</h3></div><footer class=article-time><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<span>返回</span></a></div><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#11-概念>1.1 概念</a></li><li><a href=#12-使用http来模拟rpc>1.2 使用Http来模拟RPC</a></li><li><a href=#13-rpc开发的四大要素>1.3 RPC开发的四大要素</a></li></ol><ol><li><a href=#21-go快速体验rpc>2.1 go快速体验RPC</a></li><li><a href=#22-rpc支持json>2.2 RPC支持JSON</a></li><li><a href=#23-基于http的rpc>2.3 基于HTTP的RPC</a></li><li><a href=#24-进一步改进rpc调用过程>2.4 进一步改进RPC调用过程</a><ol><li><a href=#241-servicename统一和名称冲突的问题>2.4.1 ServiceName统一和名称冲突的问题</a></li><li><a href=#242-继续屏蔽helloservicename和hello函数名称>2.4.2 继续屏蔽HelloServiceName和Hello函数名称</a></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><a href=/p/rpc-grpc-basic/><img src=/img/golang.jpg loading=lazy alt="Featured image of post RPC和GRPC基础知识"></a></div><div class=article-details><header class=article-category><a href=/categories/golang/>Golang</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/rpc-grpc-basic/>RPC和GRPC基础知识</a></h2><h3 class=article-subtitle>RPC和GRPC基础知识</h3></div><footer class=article-time><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
 <time class=article-time--published>May 08, 2024</time></div><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>阅读时长: 8 分钟</time></div></footer></div></header><section class=article-content><h1 id=rpc和grpc基础知识><a href=#rpc%e5%92%8cgrpc%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86>#</a>
-RPC和GRPC基础知识</h1><h1 id=一概念><a href=#%e4%b8%80%e6%a6%82%e5%bf%b5>#</a>
-一、概念</h1><h2 id=11-概念><a href=#11-%e6%a6%82%e5%bf%b5>#</a>
+<time class=article-time--reading>阅读时长: 11 分钟</time></div></footer></div></header><section class=article-content><h1 id=rpc和grpc基础知识><a href=#rpc%e5%92%8cgrpc%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86>#</a>
+RPC和GRPC基础知识</h1><h1 id=一基础><a href=#%e4%b8%80%e5%9f%ba%e7%a1%80>#</a>
+一、基础</h1><h2 id=11-概念><a href=#11-%e6%a6%82%e5%bf%b5>#</a>
 1.1 概念</h2><ol><li>RPC（Remote Procedure Call） 远程过程调用。</li><li>RPC是一种通过网络从远程计算机程序上请求服务，不需要了解底层网络技术的协议。</li><li>RPC主要作用就是不同的服务间方法调用就像本地调用一样便捷。</li></ol><blockquote><p>本地调用转变为远程过程调用带来的问题</p></blockquote><p>在远程调用时，我们需要执行的函数体是在远程的机器上的，也就是说，add是在另一个进程中执行的。这就带来了几个新问题：</p><ol><li><strong>Call ID映射</strong>。我们怎么告诉远程机器我们要调用add，而不是sub或者Foo呢？在本地调用中，函数体是直接通过函数指针来指定的，我们调用add，编译器就自动帮我们调用它相应的函数指针。但是在远程调用中，函数指针是不行的，因为两个进程的地址空间是完全不一样的。所以，在RPC中，所有的函数都必须有自己的一个ID。这个ID在所有进程中都是唯一确定的。客户端在做远程过程调用时，必须附上这个ID。然后我们还需要在客户端和服务端分别维护一个 {函数 &lt;&ndash;> Call ID} 的对应表。两者的表不一定需要完全相同，但相同的函数对应的Call ID必须相同。当客户端需要进行远程调用时，它就查一下这个表，找出相应的Call ID，然后把它传给服务端，服务端也通过查表，来确定客户端需要调用的函数，然后执行相应函数的代码。</li><li><strong>序列化和反序列化</strong>。客户端怎么把参数值传给远程的函数呢？在本地调用中，我们只需要把参数压到栈里，然后让函数自己去栈里读就行。但是在远程过程调用时，客户端跟服务端是不同的进程，不能通过内存来传递参数。甚至有时候客户端和服务端使用的都不是同一种语言（比如服务端用C++，客户端用Java或者Python）。这时候就需要客户端把参数先转成一个字节流，传给服务端后，再把字节流转成自己能读取的格式。这个过程叫序列化和反序列化。同理，从服务端返回的值也需要序列化反序列化的过程。</li><li><strong>网络传输</strong>。远程调用往往用在网络上，客户端和服务端是通过网络连接的。所有的数据都需要通过网络传输，因此就需要有一个网络传输层。网络传输层需要把Call ID和序列化后的参数字节流传给服务端，然后再把序列化后的调用结果传回客户端。只要能完成这两者的，都可以作为传输层使用。因此，它所使用的协议其实是不限的，能完成传输就行。尽管大部分RPC框架都使用TCP协议，但其实UDP也可以，而gRPC干脆就用了HTTP2。Java的Netty也属于这层的东西。</li></ol><blockquote><p>解决了上面三个机制，就能实现RPC了，具体过程如下：</p></blockquote><p><strong>Client端解决的问题：</strong></p><ol><li>将这个调用映射为Call ID。这里假设用最简单的字符串当Call ID的方法</li><li>将Call ID，a和b序列化。可以直接将它们的值以二进制形式打包</li><li>把2中得到的数据包发送给ServerAddr，这需要使用网络传输层</li><li>等待服务器返回结果</li><li>如果服务器调用成功，那么就将结果反序列化，并赋给total</li></ol><p><strong>Server端解决的问题：</strong></p><ol><li>在本地维护一个Call ID到函数指针的映射call_id_map，可以用dict完成</li><li>等待请求，包括多线程的并发处理能力</li><li>得到一个请求后，将其数据包反序列化，得到Call ID</li><li>通过在call_id_map中查找，得到相应的函数指针</li><li>将a和rb反序列化后，在本地调用add函数，得到结果</li><li>将结果序列化后通过网络返回给Client</li></ol><p>​ 在上面的整个流程中，估计有部分同学看到了熟悉的计算机网络的流程和web服务器的定义。</p><p>所以要实现一个RPC框架，其实只需要按以上流程实现就基本完成了。</p><p><strong>其中：</strong></p><ul><li>Call ID映射可以直接使用函数字符串，也可以使用整数ID。映射表一般就是一个哈希表。</li><li>序列化反序列化可以自己写，也可以使用Protobuf或者FlatBuffers之类的。</li><li>网络传输库可以自己写socket，或者用asio，ZeroMQ，Netty之类。</li></ul><p>实际上真正的开发过程中，除了上面的基本功能以外还需要更多的细节：网络错误、流量控制、超时和重试等。</p><h2 id=12-使用http来模拟rpc><a href=#12-%e4%bd%bf%e7%94%a8http%e6%9d%a5%e6%a8%a1%e6%8b%9frpc>#</a>
 1.2 使用Http来模拟RPC</h2><p>server.go</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
@@ -131,6 +131,7 @@ RPC和GRPC基础知识</h1><h1 id=一概念><a href=#%e4%b8%80%e6%a6%82%e5%bf%b5
 </span><span class=lnt>22
 </span><span class=lnt>23
 </span><span class=lnt>24
+</span><span class=lnt>25
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>main</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
@@ -147,12 +148,283 @@ RPC和GRPC基础知识</h1><h1 id=一概念><a href=#%e4%b8%80%e6%a6%82%e5%bf%b5
 </span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=kc>nil</span>
 </span></span><span class=line><span class=cl><span class=p>}</span>
 </span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>	<span class=c1>// 1. 实例化一个 server
-</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=nx>listener</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>net</span><span class=p>.</span><span class=nf>Listen</span><span class=p>(</span><span class=s>&#34;tcp&#34;</span><span class=p>,</span> <span class=s>&#34;:1234&#34;</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>	<span class=c1>// 2. 注册处理逻辑 handler
+</span></span><span class=line><span class=cl>    <span class=c1>// 1. 注册名称为“HelloService”的rpc服务对象（注册处理逻辑 handler）
 </span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=nx>_</span> <span class=p>=</span> <span class=nx>rpc</span><span class=p>.</span><span class=nf>RegisterName</span><span class=p>(</span><span class=s>&#34;HelloService&#34;</span><span class=p>,</span> <span class=o>&amp;</span><span class=nx>HelloService</span><span class=p>{})</span>
-</span></span><span class=line><span class=cl>	<span class=c1>// 3. 启动服务
+</span></span><span class=line><span class=cl>	<span class=c1>// 2. 创建监听器
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=nx>listener</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>net</span><span class=p>.</span><span class=nf>Listen</span><span class=p>(</span><span class=s>&#34;tcp&#34;</span><span class=p>,</span> <span class=s>&#34;:1234&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=c1>// 3. 接受一个连接
 </span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=nx>conn</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>listener</span><span class=p>.</span><span class=nf>Accept</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 4. rpc处理此次连接
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=nx>rpc</span><span class=p>.</span><span class=nf>ServeConn</span><span class=p>(</span><span class=nx>conn</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>client.go</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>main</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;fmt&#34;</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;net/rpc&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=c1>// 1. 与服务端建立连接
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=nx>client</span><span class=p>,</span> <span class=nx>err</span> <span class=o>:=</span> <span class=nx>rpc</span><span class=p>.</span><span class=nf>Dial</span><span class=p>(</span><span class=s>&#34;tcp&#34;</span><span class=p>,</span> <span class=s>&#34;localhost:1234&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=nb>panic</span><span class=p>(</span><span class=s>&#34;连接失败&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=kd>var</span> <span class=nx>reply</span> <span class=kt>string</span> <span class=c1>// string 有默认值
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>// 2. 执行RPC服务端的函数
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=nx>err</span> <span class=p>=</span> <span class=nx>client</span><span class=p>.</span><span class=nf>Call</span><span class=p>(</span><span class=s>&#34;HelloService.Hello&#34;</span><span class=p>,</span> <span class=s>&#34;bobby&#34;</span><span class=p>,</span> <span class=o>&amp;</span><span class=nx>reply</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=nb>panic</span><span class=p>(</span><span class=s>&#34;调用失败&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nx>reply</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=22-rpc支持json><a href=#22-rpc%e6%94%af%e6%8c%81json>#</a>
+2.2 RPC支持JSON</h2><p>​ 标准库的RPC默认采用Go语言特有的<code>gob</code>编码，因此从其它语言调用Go语言实现的RPC服务将比较困难。在互联网的微服务时代，每个RPC以及服务的使用者都可能采用不同的编程语言，因此跨语言是互联网时代RPC的一个首要条件。得益于RPC的框架设计，Go语言的RPC其实也是很容易实现跨语言支持的。</p><p>Go语言的RPC框架有两个比较有特色的设计：一个是RPC数据打包时可以通过插件实现自定义的编码和解码；另一个是RPC建立在抽象的io.ReadWriteCloser接口之上的，我们可以将RPC架设在不同的通讯协议之上。这里我们将尝试通过官方自带的net/rpc/jsonrpc扩展实现一个跨语言的PPC。</p><p>首先是基于json编码重新实现RPC服务：</p><p>server.go</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>main</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;net&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;net/rpc&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;net/rpc/jsonrpc&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>type</span> <span class=nx>HelloService</span> <span class=kd>struct</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>s</span> <span class=o>*</span><span class=nx>HelloService</span><span class=p>)</span> <span class=nf>Hello</span><span class=p>(</span><span class=nx>request</span> <span class=kt>string</span><span class=p>,</span> <span class=nx>reply</span> <span class=o>*</span><span class=kt>string</span><span class=p>)</span> <span class=kt>error</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=o>*</span><span class=nx>reply</span> <span class=p>=</span> <span class=s>&#34;hello &#34;</span><span class=o>+</span> <span class=nx>request</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kc>nil</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>rpc</span><span class=p>.</span><span class=nf>RegisterName</span><span class=p>(</span><span class=s>&#34;HelloService&#34;</span><span class=p>,</span> <span class=nb>new</span><span class=p>(</span><span class=nx>HelloService</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=nx>listener</span><span class=p>,</span> <span class=nx>err</span> <span class=o>:=</span> <span class=nx>net</span><span class=p>.</span><span class=nf>Listen</span><span class=p>(</span><span class=s>&#34;tcp&#34;</span><span class=p>,</span> <span class=s>&#34;:1234&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nb>panic</span><span class=p>(</span><span class=s>&#34;启动错误&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>conn</span><span class=p>,</span> <span class=nx>err</span> <span class=o>:=</span> <span class=nx>listener</span><span class=p>.</span><span class=nf>Accept</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nb>panic</span><span class=p>(</span><span class=s>&#34;接收&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>go</span> <span class=nx>rpc</span><span class=p>.</span><span class=nf>ServeCodec</span><span class=p>(</span><span class=nx>jsonrpc</span><span class=p>.</span><span class=nf>NewServerCodec</span><span class=p>(</span><span class=nx>conn</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>​ 代码中最大的变化是用rpc.ServeCodec函数替代了rpc.ServeConn函数，传入的参数是针对服务端的json编解码器。</p><p>client.go</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>main</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;fmt&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;net&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;net/rpc&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;net/rpc/jsonrpc&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>conn</span><span class=p>,</span> <span class=nx>err</span> <span class=o>:=</span> <span class=nx>net</span><span class=p>.</span><span class=nf>Dial</span><span class=p>(</span><span class=s>&#34;tcp&#34;</span><span class=p>,</span> <span class=s>&#34;localhost:1234&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nb>panic</span><span class=p>(</span><span class=s>&#34;连接错误&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>client</span> <span class=o>:=</span> <span class=nx>rpc</span><span class=p>.</span><span class=nf>NewClientWithCodec</span><span class=p>(</span><span class=nx>jsonrpc</span><span class=p>.</span><span class=nf>NewClientCodec</span><span class=p>(</span><span class=nx>conn</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>reply</span> <span class=kt>string</span>
+</span></span><span class=line><span class=cl>    <span class=nx>err</span> <span class=p>=</span> <span class=nx>client</span><span class=p>.</span><span class=nf>Call</span><span class=p>(</span><span class=s>&#34;HelloService.Hello&#34;</span><span class=p>,</span> <span class=s>&#34;imooc&#34;</span><span class=p>,</span> <span class=o>&amp;</span><span class=nx>reply</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nb>panic</span><span class=p>(</span><span class=s>&#34;调用错误&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nx>reply</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=23-基于http的rpc><a href=#23-%e5%9f%ba%e4%ba%8ehttp%e7%9a%84rpc>#</a>
+2.3 基于HTTP的RPC</h2><p>server.go</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>main</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;io&#34;</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;net/http&#34;</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;net/rpc&#34;</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;net/rpc/jsonrpc&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>type</span> <span class=nx>HelloService</span> <span class=kd>struct</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>s</span> <span class=o>*</span><span class=nx>HelloService</span><span class=p>)</span> <span class=nf>Hello</span><span class=p>(</span><span class=nx>request</span> <span class=kt>string</span><span class=p>,</span> <span class=nx>reply</span> <span class=o>*</span><span class=kt>string</span><span class=p>)</span> <span class=kt>error</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=c1>// 返回值是通过修改reply的值
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=o>*</span><span class=nx>reply</span> <span class=p>=</span> <span class=s>&#34;Hello &#34;</span> <span class=o>+</span> <span class=nx>request</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=kc>nil</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=nx>_</span> <span class=p>=</span> <span class=nx>rpc</span><span class=p>.</span><span class=nf>RegisterName</span><span class=p>(</span><span class=s>&#34;HelloService&#34;</span><span class=p>,</span> <span class=nb>new</span><span class=p>(</span><span class=nx>HelloService</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>	<span class=nx>http</span><span class=p>.</span><span class=nf>HandleFunc</span><span class=p>(</span><span class=s>&#34;/jsonrpc&#34;</span><span class=p>,</span> <span class=kd>func</span><span class=p>(</span><span class=nx>w</span> <span class=nx>http</span><span class=p>.</span><span class=nx>ResponseWriter</span><span class=p>,</span> <span class=nx>r</span> <span class=o>*</span><span class=nx>http</span><span class=p>.</span><span class=nx>Request</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=kd>var</span> <span class=nx>conn</span> <span class=nx>io</span><span class=p>.</span><span class=nx>ReadWriteCloser</span> <span class=p>=</span> <span class=kd>struct</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>			<span class=nx>io</span><span class=p>.</span><span class=nx>Writer</span>
+</span></span><span class=line><span class=cl>			<span class=nx>io</span><span class=p>.</span><span class=nx>ReadCloser</span>
+</span></span><span class=line><span class=cl>		<span class=p>}{</span>
+</span></span><span class=line><span class=cl>			<span class=nx>ReadCloser</span><span class=p>:</span> <span class=nx>r</span><span class=p>.</span><span class=nx>Body</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>			<span class=nx>Writer</span><span class=p>:</span>     <span class=nx>w</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>		<span class=p>}</span>
+</span></span><span class=line><span class=cl>		<span class=nx>_</span> <span class=p>=</span> <span class=nx>rpc</span><span class=p>.</span><span class=nf>ServeRequest</span><span class=p>(</span><span class=nx>jsonrpc</span><span class=p>.</span><span class=nf>NewServerCodec</span><span class=p>(</span><span class=nx>conn</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>	<span class=p>})</span>
+</span></span><span class=line><span class=cl>	<span class=nx>_</span> <span class=p>=</span> <span class=nx>http</span><span class=p>.</span><span class=nf>ListenAndServe</span><span class=p>(</span><span class=s>&#34;:1234&#34;</span><span class=p>,</span> <span class=kc>nil</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>client.go</p><ul><li><p>使用curl来访问</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>// 请求格式
+</span></span><span class=line><span class=cl>curl localhost:1234/jsonrpc -X POST --data <span class=s1>&#39;{&#34;method&#34;:&#34;HelloService.Hello&#34;,&#34;params&#34;:[&#34;bobby&#34;],&#34;id&#34;:0}&#39;</span>
+</span></span><span class=line><span class=cl><span class=c1># 返回值</span>
+</span></span><span class=line><span class=cl><span class=o>{</span><span class=s2>&#34;id&#34;</span>:0,<span class=s2>&#34;result&#34;</span>:<span class=s2>&#34;Hello bobby&#34;</span>,<span class=s2>&#34;error&#34;</span>:null<span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul><h2 id=24-进一步改进rpc调用过程><a href=#24-%e8%bf%9b%e4%b8%80%e6%ad%a5%e6%94%b9%e8%bf%9brpc%e8%b0%83%e7%94%a8%e8%bf%87%e7%a8%8b>#</a>
+2.4 进一步改进RPC调用过程</h2><p>​ 前面的rpc调用虽然简单，但是和普通的http的调用差异不大，这次我们解决下面的问题：</p><ul><li>ServiceName统一和名称冲突的问题</li><li>只关注业务代码，屏蔽HelloServiceName和Hello函数名称</li></ul><h3 id=241-servicename统一和名称冲突的问题><a href=#241-servicename%e7%bb%9f%e4%b8%80%e5%92%8c%e5%90%8d%e7%a7%b0%e5%86%b2%e7%aa%81%e7%9a%84%e9%97%ae%e9%a2%98>#</a>
+2.4.1 ServiceName统一和名称冲突的问题</h3><ol><li>server端和client端如何统一serviceName</li><li>多个server的包中serviceName同名的问题</li></ol><p>新建handler/handler.go文件内容如下： 为什么要新建一个文件？ - 解耦</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>handler</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>const</span> <span class=nx>HelloServiceName</span> <span class=p>=</span> <span class=s>&#34;handler/HelloService&#34;</span>
+</span></span></code></pre></td></tr></table></div></div><p>server.go</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>main</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;net&#34;</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;net/rpc&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;base_grpc/handler&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>type</span> <span class=nx>HelloService</span> <span class=kd>struct</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>s</span> <span class=o>*</span><span class=nx>HelloService</span><span class=p>)</span> <span class=nf>Hello</span><span class=p>(</span><span class=nx>request</span> <span class=kt>string</span><span class=p>,</span> <span class=nx>reply</span> <span class=o>*</span><span class=kt>string</span><span class=p>)</span> <span class=kt>error</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=c1>// 返回值是通过修改reply的值
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=o>*</span><span class=nx>reply</span> <span class=p>=</span> <span class=s>&#34;Hello &#34;</span> <span class=o>+</span> <span class=nx>request</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=kc>nil</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=nx>_</span> <span class=p>=</span> <span class=nx>rpc</span><span class=p>.</span><span class=nf>RegisterName</span><span class=p>(</span><span class=nx>handler</span><span class=p>.</span><span class=nx>HelloServiceName</span><span class=p>,</span> <span class=nb>new</span><span class=p>(</span><span class=nx>HelloService</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>	<span class=nx>listener</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>net</span><span class=p>.</span><span class=nf>Listen</span><span class=p>(</span><span class=s>&#34;tcp&#34;</span><span class=p>,</span> <span class=s>&#34;:1234&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=nx>conn</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>listener</span><span class=p>.</span><span class=nf>Accept</span><span class=p>()</span>
 </span></span><span class=line><span class=cl>	<span class=nx>rpc</span><span class=p>.</span><span class=nf>ServeConn</span><span class=p>(</span><span class=nx>conn</span><span class=p>)</span>
 </span></span><span class=line><span class=cl><span class=p>}</span>
 </span></span></code></pre></td></tr></table></div></div><p>client.go</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -175,9 +447,11 @@ RPC和GRPC基础知识</h1><h1 id=一概念><a href=#%e4%b8%80%e6%a6%82%e5%bf%b5
 </span><span class=lnt>18
 </span><span class=lnt>19
 </span><span class=lnt>20
+</span><span class=lnt>21
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>main</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;base_grpc/handler&#34;</span>
 </span></span><span class=line><span class=cl>	<span class=s>&#34;fmt&#34;</span>
 </span></span><span class=line><span class=cl>	<span class=s>&#34;net/rpc&#34;</span>
 </span></span><span class=line><span class=cl><span class=p>)</span>
@@ -188,12 +462,177 @@ RPC和GRPC基础知识</h1><h1 id=一概念><a href=#%e4%b8%80%e6%a6%82%e5%bf%b5
 </span></span><span class=line><span class=cl>	<span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>		<span class=nb>panic</span><span class=p>(</span><span class=s>&#34;连接失败&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>	<span class=p>}</span>
-</span></span><span class=line><span class=cl>	<span class=kd>var</span> <span class=nx>reply</span> <span class=kt>string</span> <span class=c1>// string 有默认值
-</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=nx>err</span> <span class=p>=</span> <span class=nx>client</span><span class=p>.</span><span class=nf>Call</span><span class=p>(</span><span class=s>&#34;HelloService.Hello&#34;</span><span class=p>,</span> <span class=s>&#34;bobby&#34;</span><span class=p>,</span> <span class=o>&amp;</span><span class=nx>reply</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=kd>var</span> <span class=nx>reply</span> <span class=kt>string</span>
+</span></span><span class=line><span class=cl>	<span class=nx>err</span> <span class=p>=</span> <span class=nx>client</span><span class=p>.</span><span class=nf>Call</span><span class=p>(</span><span class=nx>handler</span><span class=p>.</span><span class=nx>HelloServiceName</span><span class=o>+</span><span class=s>&#34;.Hello&#34;</span><span class=p>,</span> <span class=s>&#34;bobby&#34;</span><span class=p>,</span> <span class=o>&amp;</span><span class=nx>reply</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>	<span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>		<span class=nb>panic</span><span class=p>(</span><span class=s>&#34;调用失败&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>	<span class=p>}</span>
 </span></span><span class=line><span class=cl>	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nx>reply</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=242-继续屏蔽helloservicename和hello函数名称><a href=#242-%e7%bb%a7%e7%bb%ad%e5%b1%8f%e8%94%bdhelloservicename%e5%92%8chello%e5%87%bd%e6%95%b0%e5%90%8d%e7%a7%b0>#</a>
+2.4.2 继续屏蔽HelloServiceName和Hello函数名称</h3><blockquote><p>handler.go</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>handler</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>const</span> <span class=nx>HelloServiceName</span> <span class=p>=</span> <span class=s>&#34;handler/HelloService&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>type</span> <span class=nx>NewHelloService</span> <span class=kd>struct</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>s</span> <span class=o>*</span><span class=nx>NewHelloService</span><span class=p>)</span> <span class=nf>Hello</span><span class=p>(</span><span class=nx>request</span> <span class=kt>string</span><span class=p>,</span> <span class=nx>reply</span> <span class=o>*</span><span class=kt>string</span><span class=p>)</span> <span class=kt>error</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=c1>// 返回值是通过修改reply的值
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=o>*</span><span class=nx>reply</span> <span class=p>=</span> <span class=s>&#34;Hello &#34;</span> <span class=o>+</span> <span class=nx>request</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=kc>nil</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>服务端代理</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>server_proxy</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;net/rpc&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>const</span> <span class=nx>HelloServiceName</span> <span class=p>=</span> <span class=s>&#34;HelloService&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>type</span> <span class=nx>HelloServicer</span> <span class=kd>interface</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=nf>Hello</span><span class=p>(</span><span class=nx>request</span> <span class=kt>string</span><span class=p>,</span> <span class=nx>replay</span> <span class=o>*</span><span class=kt>string</span><span class=p>)</span> <span class=kt>error</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>RegisterHelloService</span><span class=p>(</span><span class=nx>srv</span> <span class=nx>HelloServicer</span><span class=p>)</span> <span class=kt>error</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=nx>rpc</span><span class=p>.</span><span class=nf>RegisterName</span><span class=p>(</span><span class=nx>HelloServiceName</span><span class=p>,</span> <span class=nx>srv</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>服务端</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>main</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;net&#34;</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;net/rpc&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;base_grpc/handler&#34;</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;base_grpc/server_proxy&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=nx>_</span> <span class=p>=</span> <span class=nx>server_proxy</span><span class=p>.</span><span class=nf>RegisterHelloService</span><span class=p>(</span><span class=o>&amp;</span><span class=nx>handler</span><span class=p>.</span><span class=nx>NewHelloService</span><span class=p>{})</span>
+</span></span><span class=line><span class=cl>	<span class=nx>listener</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>net</span><span class=p>.</span><span class=nf>Listen</span><span class=p>(</span><span class=s>&#34;tcp&#34;</span><span class=p>,</span> <span class=s>&#34;:1234&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=nx>conn</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>listener</span><span class=p>.</span><span class=nf>Accept</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>	<span class=nx>rpc</span><span class=p>.</span><span class=nf>ServeConn</span><span class=p>(</span><span class=nx>conn</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>客户端代理</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>client_proxy</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;net/rpc&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=s>&#34;base_grpc/handler&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>type</span> <span class=nx>HelloServiceClientStub</span> <span class=kd>struct</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=o>*</span><span class=nx>rpc</span><span class=p>.</span><span class=nx>Client</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>NewHelloServiceClientStub</span><span class=p>(</span><span class=nx>protocol</span><span class=p>,</span> <span class=nx>addr</span> <span class=kt>string</span><span class=p>)</span> <span class=o>*</span><span class=nx>HelloServiceClientStub</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=nx>client</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>rpc</span><span class=p>.</span><span class=nf>Dial</span><span class=p>(</span><span class=nx>protocol</span><span class=p>,</span> <span class=nx>addr</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=o>&amp;</span><span class=nx>HelloServiceClientStub</span><span class=p>{</span><span class=nx>client</span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>c</span> <span class=nx>HelloServiceClientStub</span><span class=p>)</span> <span class=nf>Hello</span><span class=p>(</span><span class=nx>request</span> <span class=kt>string</span><span class=p>,</span> <span class=nx>replay</span> <span class=o>*</span><span class=kt>string</span><span class=p>)</span> <span class=kt>error</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=nx>err</span> <span class=o>:=</span> <span class=nx>c</span><span class=p>.</span><span class=nx>Client</span><span class=p>.</span><span class=nf>Call</span><span class=p>(</span><span class=nx>handler</span><span class=p>.</span><span class=nx>HelloServiceName</span><span class=o>+</span><span class=s>&#34;.Hello&#34;</span><span class=p>,</span> <span class=nx>request</span><span class=p>,</span> <span class=nx>replay</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=k>return</span> <span class=nx>err</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=kc>nil</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>客户端</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=n>package</span> <span class=n>main</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>	<span class=s2>&#34;fmt&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=s2>&#34;base_grpc/client_proxy&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>func</span> <span class=n>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=o>//</span> <span class=mf>1.</span> <span class=err>建立连接</span>
+</span></span><span class=line><span class=cl>	<span class=n>client</span> <span class=p>:</span><span class=o>=</span> <span class=n>client_proxy</span><span class=o>.</span><span class=n>NewHelloServiceClientStub</span><span class=p>(</span><span class=s2>&#34;tcp&#34;</span><span class=p>,</span> <span class=s2>&#34;:1234&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=k>var</span> <span class=n>reply</span> <span class=n>string</span>
+</span></span><span class=line><span class=cl>	<span class=n>_</span> <span class=o>=</span> <span class=n>client</span><span class=o>.</span><span class=n>Hello</span><span class=p>(</span><span class=s2>&#34;bobby&#34;</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>reply</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=n>fmt</span><span class=o>.</span><span class=n>Println</span><span class=p>(</span><span class=n>reply</span><span class=p>)</span>
 </span></span><span class=line><span class=cl><span class=p>}</span>
 </span></span></code></pre></td></tr></table></div></div></section><footer class=article-footer><section class=article-tags><a href=/tags/golang/>Golang</a>
 <a href=/tags/rpc/>Rpc</a>
