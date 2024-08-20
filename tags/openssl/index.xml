@@ -7,62 +7,20 @@ Nginx生成自签名证书
 &lt;/h1>&lt;blockquote>
 &lt;p>使用指定-subj “/C=CN/ST=MyProvince/L=MyCity/O=MyOrganization”,生成根证书私钥和根证书&lt;/p>
 &lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl req -x509 -nodes -days &lt;span class="m">36500&lt;/span> -newkey rsa:2048 -subj &lt;span class="s2">&amp;#34;/C=CN/ST=beijing/L=beijing/O=MyOrganization&amp;#34;&lt;/span> -keyout CA-private.key -out CA-certificate.crt -reqexts v3_req -extensions v3_ca
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h1 id="二生成自签名证书私钥">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl req -x509 -nodes -days &lt;span class="m">36500&lt;/span> -newkey rsa:2048 -subj &lt;span class="s2">&amp;#34;/C=CN/ST=beijing/L=beijing/O=MyOrganization&amp;#34;&lt;/span> -keyout CA-private.key -out CA-certificate.crt -reqexts v3_req -extensions v3_ca
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="二生成自签名证书私钥">
 &lt;a href="#%e4%ba%8c%e7%94%9f%e6%88%90%e8%87%aa%e7%ad%be%e5%90%8d%e8%af%81%e4%b9%a6%e7%a7%81%e9%92%a5">#&lt;/a>
 二、生成自签名证书私钥
-&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl genrsa -out private.key &lt;span class="m">2048&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h1 id="三根据自签名证书私钥生成自签名证书申请文件">
+&lt;/h1>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl genrsa -out private.key &lt;span class="m">2048&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="三根据自签名证书私钥生成自签名证书申请文件">
 &lt;a href="#%e4%b8%89%e6%a0%b9%e6%8d%ae%e8%87%aa%e7%ad%be%e5%90%8d%e8%af%81%e4%b9%a6%e7%a7%81%e9%92%a5%e7%94%9f%e6%88%90%e8%87%aa%e7%ad%be%e5%90%8d%e8%af%81%e4%b9%a6%e7%94%b3%e8%af%b7%e6%96%87%e4%bb%b6">#&lt;/a>
 三、根据自签名证书私钥生成自签名证书申请文件
-&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl req -new -key private.key -subj &lt;span class="s2">&amp;#34;/C=CN/ST=beijing/L=beijing/O=MyOrganization/CN=192.168.60.68&amp;#34;&lt;/span> -sha256 -out private.csr
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h1 id="四定义自签名证书扩展文件解决chrome安全告警">
+&lt;/h1>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl req -new -key private.key -subj &lt;span class="s2">&amp;#34;/C=CN/ST=beijing/L=beijing/O=MyOrganization/CN=192.168.60.68&amp;#34;&lt;/span> -sha256 -out private.csr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="四定义自签名证书扩展文件解决chrome安全告警">
 &lt;a href="#%e5%9b%9b%e5%ae%9a%e4%b9%89%e8%87%aa%e7%ad%be%e5%90%8d%e8%af%81%e4%b9%a6%e6%89%a9%e5%b1%95%e6%96%87%e4%bb%b6%e8%a7%a3%e5%86%b3chrome%e5%ae%89%e5%85%a8%e5%91%8a%e8%ad%a6">#&lt;/a>
 四、定义自签名证书扩展文件(解决chrome安全告警)
 &lt;/h1>&lt;p>​ 定义自签名证书扩展文件(解决Chrome安全告警)。在默认情况下生成的证书一旦选择信任，在 Edge, Firefox 等浏览器都显示为安全，但是Chrome仍然会标记为不安全并警告拦截，这是因为 Chrome 需要证书支持扩展 Subject Alternative Name, 因此生成时需要特别指定 MyExt 扩展并添加相关参数,将下述内容放到一个文件中,命名为private.ext&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat &amp;gt; private.ext &lt;span class="s">&amp;lt;&amp;lt; EOF
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat &amp;gt; private.ext &lt;span class="s">&amp;lt;&amp;lt; EOF
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">[ req ]
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">default_bits = 1024
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">distinguished_name = req_distinguished_name
@@ -79,22 +37,12 @@ Nginx生成自签名证书
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">subjectAltName = IP:192.168.60.68
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h1 id="五生成自签名证书">
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="五生成自签名证书">
 &lt;a href="#%e4%ba%94%e7%94%9f%e6%88%90%e8%87%aa%e7%ad%be%e5%90%8d%e8%af%81%e4%b9%a6">#&lt;/a>
 五、生成自签名证书
-&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">##设置100年的证书有效期&lt;/span>
+&lt;/h1>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">##设置100年的证书有效期&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">openssl x509 -req -days &lt;span class="m">36500&lt;/span> -in private.csr -CA CA-certificate.crt -CAkey CA-private.key -CAcreateserial -sha256 -out private.crt -extfile private.ext -extensions MyExt
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h1 id="六配置nginx">
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="六配置nginx">
 &lt;a href="#%e5%85%ad%e9%85%8d%e7%bd%aenginx">#&lt;/a>
 六、配置Nginx
 &lt;/h1>&lt;p>将上面生成的private.crt和private.key放在nginx下的ssl目录&lt;/p>

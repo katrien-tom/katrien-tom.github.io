@@ -4,33 +4,15 @@
 <time class=article-time--published>May 08, 2024</time></div><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
 <time class=article-time--reading>阅读时长: 2 分钟</time></div></footer></div></header><section class=article-content><h1 id=一docker安装密码管理器vaultwarden><a href=#%e4%b8%80docker%e5%ae%89%e8%a3%85%e5%af%86%e7%a0%81%e7%ae%a1%e7%90%86%e5%99%a8vaultwarden>#</a>
 一、Docker安装密码管理器Vaultwarden</h1><h2 id=11-创建专用网络><a href=#11-%e5%88%9b%e5%bb%ba%e4%b8%93%e7%94%a8%e7%bd%91%e7%bb%9c>#</a>
-1.1 创建专用网络</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>docker network create middleware
-</span></span></code></pre></td></tr></table></div></div><h2 id=12-准备工作><a href=#12-%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c>#</a>
-1.2 准备工作</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=nb>cd</span> /
+1.1 创建专用网络</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>docker network create middleware
+</span></span></code></pre></div><h2 id=12-准备工作><a href=#12-%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c>#</a>
+1.2 准备工作</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=nb>cd</span> /
 </span></span><span class=line><span class=cl>mkdir mydata
 </span></span><span class=line><span class=cl>mkdir -p mydata/vaultwarden/data
 </span></span><span class=line><span class=cl>mkdir -p mydata/nginx/conf
 </span></span><span class=line><span class=cl>mkdir -p mydata/nginx/ssl
-</span></span></code></pre></td></tr></table></div></div><h2 id=13-安装vaultwarden><a href=#13-%e5%ae%89%e8%a3%85vaultwarden>#</a>
-1.3 安装vaultwarden</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>docker run -d <span class=se>\
+</span></span></code></pre></div><h2 id=13-安装vaultwarden><a href=#13-%e5%ae%89%e8%a3%85vaultwarden>#</a>
+1.3 安装vaultwarden</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>docker run -d <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  --name vaultwarden <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  -e <span class=nv>INVITATIONS_ALLOWED</span><span class=o>=</span><span class=nb>false</span> <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  -e <span class=nv>ADMIN_TOKEN</span><span class=o>=</span>token123456 <span class=se>\
@@ -42,34 +24,14 @@
 </span></span></span><span class=line><span class=cl><span class=se></span>  --log-opt max-size<span class=o>=</span>200k <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  --log-opt max-file<span class=o>=</span><span class=m>10</span> <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  vaultwarden/server:latest
-</span></span></code></pre></td></tr></table></div></div><h3 id=131-关闭新注册><a href=#131-%e5%85%b3%e9%97%ad%e6%96%b0%e6%b3%a8%e5%86%8c>#</a>
+</span></span></code></pre></div><h3 id=131-关闭新注册><a href=#131-%e5%85%b3%e9%97%ad%e6%96%b0%e6%b3%a8%e5%86%8c>#</a>
 1.3.1 关闭新注册</h3><pre><code>注册完管理员账号后进入/admin，将`Allow new signups`选项设置为false。
 </code></pre><h2 id=14-安装nginx><a href=#14-%e5%ae%89%e8%a3%85nginx>#</a>
 1.4 安装nginx</h2><h3 id=141-生成自签名证书><a href=#141-%e7%94%9f%e6%88%90%e8%87%aa%e7%ad%be%e5%90%8d%e8%af%81%e4%b9%a6>#</a>
-1.4.1 生成自签名证书</h3><ol><li>生成根证书私钥和根证书</li></ol><blockquote><p>使用指定-subj “/C=CN/ST=MyProvince/L=MyCity/O=MyOrganization”,生成根证书私钥和根证书</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>openssl req -x509 -nodes -days <span class=m>36500</span> -newkey rsa:2048 -subj <span class=s2>&#34;/C=CN/ST=beijing/L=beijing/O=MyOrganization&#34;</span> -keyout CA-private.key -out CA-certificate.crt -reqexts v3_req -extensions v3_ca
-</span></span></code></pre></td></tr></table></div></div><ol start=2><li>生成自签名证书私钥</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>openssl genrsa -out private.key <span class=m>2048</span>
-</span></span></code></pre></td></tr></table></div></div><ol start=3><li>根据自签名证书私钥生成自签名证书申请文件</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>openssl req -new -key private.key -subj <span class=s2>&#34;/C=CN/ST=beijing/L=beijing/O=MyOrganization/CN=192.168.60.68&#34;</span> -sha256 -out private.csr
-</span></span></code></pre></td></tr></table></div></div><ol start=4><li>定义自签名证书扩展文件(解决Chrome安全告警)</li></ol><p>​ 定义自签名证书扩展文件(解决Chrome安全告警)。在默认情况下生成的证书一旦选择信任，在 Edge, Firefox 等浏览器都显示为安全，但是Chrome仍然会标记为不安全并警告拦截，这是因为 Chrome 需要证书支持扩展 Subject Alternative Name, 因此生成时需要特别指定 MyExt 扩展并添加相关参数,将下述内容放到一个文件中,命名为private.ext</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>cat &gt; private.ext <span class=s>&lt;&lt; EOF
+1.4.1 生成自签名证书</h3><ol><li>生成根证书私钥和根证书</li></ol><blockquote><p>使用指定-subj “/C=CN/ST=MyProvince/L=MyCity/O=MyOrganization”,生成根证书私钥和根证书</p></blockquote><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>openssl req -x509 -nodes -days <span class=m>36500</span> -newkey rsa:2048 -subj <span class=s2>&#34;/C=CN/ST=beijing/L=beijing/O=MyOrganization&#34;</span> -keyout CA-private.key -out CA-certificate.crt -reqexts v3_req -extensions v3_ca
+</span></span></code></pre></div><ol start=2><li>生成自签名证书私钥</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>openssl genrsa -out private.key <span class=m>2048</span>
+</span></span></code></pre></div><ol start=3><li>根据自签名证书私钥生成自签名证书申请文件</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>openssl req -new -key private.key -subj <span class=s2>&#34;/C=CN/ST=beijing/L=beijing/O=MyOrganization/CN=192.168.60.68&#34;</span> -sha256 -out private.csr
+</span></span></code></pre></div><ol start=4><li>定义自签名证书扩展文件(解决Chrome安全告警)</li></ol><p>​ 定义自签名证书扩展文件(解决Chrome安全告警)。在默认情况下生成的证书一旦选择信任，在 Edge, Firefox 等浏览器都显示为安全，但是Chrome仍然会标记为不安全并警告拦截，这是因为 Chrome 需要证书支持扩展 Subject Alternative Name, 因此生成时需要特别指定 MyExt 扩展并添加相关参数,将下述内容放到一个文件中,命名为private.ext</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>cat &gt; private.ext <span class=s>&lt;&lt; EOF
 </span></span></span><span class=line><span class=cl><span class=s>[ req ]
 </span></span></span><span class=line><span class=cl><span class=s>default_bits        = 1024
 </span></span></span><span class=line><span class=cl><span class=s>distinguished_name  = req_distinguished_name
@@ -86,60 +48,11 @@
 </span></span></span><span class=line><span class=cl><span class=s>keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
 </span></span></span><span class=line><span class=cl><span class=s>subjectAltName = IP:192.168.60.68
 </span></span></span><span class=line><span class=cl><span class=s>EOF</span>
-</span></span></code></pre></td></tr></table></div></div><ol start=5><li>生成自签名证书</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1>##设置100年的证书有效期</span>
+</span></span></code></pre></div><ol start=5><li>生成自签名证书</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1>##设置100年的证书有效期</span>
 </span></span><span class=line><span class=cl>openssl x509 -req -days <span class=m>36500</span> -in private.csr -CA CA-certificate.crt -CAkey CA-private.key -CAcreateserial -sha256 -out private.crt -extfile private.ext -extensions MyExt
-</span></span></code></pre></td></tr></table></div></div><ol start=6><li>配置Nginx</li></ol><p>​ 将上面生成的private.crt和private.key放在nginx下的ssl目录</p><ol start=7><li>客户端安装根证书</li></ol><p>​ 把该证书CA-certificate.crt安装到受信任的根证书颁发机构下</p><h3 id=142-创建配置文件><a href=#142-%e5%88%9b%e5%bb%ba%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6>#</a>
-1.4.2 创建配置文件</h3><ol><li>打开配置文件</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>vim /mydata/nginx/conf/nginx.conf
-</span></span></code></pre></td></tr></table></div></div><ol start=2><li>输入以下内容</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span><span class=lnt>40
-</span><span class=lnt>41
-</span><span class=lnt>42
-</span><span class=lnt>43
-</span><span class=lnt>44
-</span><span class=lnt>45
-</span><span class=lnt>46
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>worker_processes  1<span class=p>;</span>
+</span></span></code></pre></div><ol start=6><li>配置Nginx</li></ol><p>​ 将上面生成的private.crt和private.key放在nginx下的ssl目录</p><ol start=7><li>客户端安装根证书</li></ol><p>​ 把该证书CA-certificate.crt安装到受信任的根证书颁发机构下</p><h3 id=142-创建配置文件><a href=#142-%e5%88%9b%e5%bb%ba%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6>#</a>
+1.4.2 创建配置文件</h3><ol><li>打开配置文件</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>vim /mydata/nginx/conf/nginx.conf
+</span></span></code></pre></div><ol start=2><li>输入以下内容</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>worker_processes  1<span class=p>;</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>events <span class=o>{</span>
 </span></span><span class=line><span class=cl>    worker_connections  1024<span class=p>;</span>
@@ -185,22 +98,15 @@
 </span></span><span class=line><span class=cl>        <span class=o>}</span>
 </span></span><span class=line><span class=cl>    <span class=o>}</span>
 </span></span><span class=line><span class=cl><span class=o>}</span>
-</span></span></code></pre></td></tr></table></div></div><h3 id=143-运行nginx><a href=#143-%e8%bf%90%e8%a1%8cnginx>#</a>
-1.4.3 运行nginx</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span><span class=lnt>7
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>docker run -d --name nginx <span class=se>\
+</span></span></code></pre></div><h3 id=143-运行nginx><a href=#143-%e8%bf%90%e8%a1%8cnginx>#</a>
+1.4.3 运行nginx</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>docker run -d --name nginx <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  --network middleware <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  -v /mydata/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  -v /mydata/nginx/ssl:/etc/ssl/certs <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  -p 8080:80 <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  -p 8081:443 <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>  nginx:latest
-</span></span></code></pre></td></tr></table></div></div></section><footer class=article-footer><section class=article-tags><a href=/tags/vaultwarden/>Vaultwarden</a>
+</span></span></code></pre></div></section><footer class=article-footer><section class=article-tags><a href=/tags/vaultwarden/>Vaultwarden</a>
 <a href=/tags/docker/>Docker</a>
 <a href=/tags/%E8%87%AA%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6/>自签名证书</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
 <span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//hugo-theme-stack.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
