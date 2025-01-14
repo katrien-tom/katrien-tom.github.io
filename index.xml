@@ -93,7 +93,7 @@ data-flex-basis="499px"
 日志级别默认为 “info”，可以参考 &lt;a class="link" href="https://github.com/dani-garcia/bitwarden_rs/wiki/Logging" target="_blank" rel="noopener"
 >bitwarden_rs wiki&lt;/a> 更改日志级别。&lt;/p>
 &lt;p>如果想要开启&lt;strong>管理页面&lt;/strong>添加环境变量:ADMIN_TOKEN=token str&lt;/p>
-&lt;p>环境变量添加完成点击保存,点击右上角的启动。&lt;/p></description></item><item><title>MySQL基础知识</title><link>https://blog.binggao.xyz/p/mysql-basic/</link><pubDate>Tue, 18 Jun 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/mysql-basic/</guid><description>&lt;img src="https://blog.binggao.xyz/img/mysql.jpg" alt="Featured image of post MySQL基础知识" />&lt;h1 id="mysql基础知识">
+&lt;p>环境变量添加完成点击保存，点击右上角的启动。&lt;/p></description></item><item><title>MySQL基础知识</title><link>https://blog.binggao.xyz/p/mysql-basic/</link><pubDate>Tue, 18 Jun 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/mysql-basic/</guid><description>&lt;img src="https://blog.binggao.xyz/img/mysql.jpg" alt="Featured image of post MySQL基础知识" />&lt;h1 id="mysql基础知识">
 &lt;a href="#mysql%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86">#&lt;/a>
 MySQL基础知识
 &lt;/h1>&lt;h1 id="1-sql语言的分类">

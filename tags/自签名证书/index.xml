@@ -93,7 +93,7 @@ data-flex-basis="499px"
 日志级别默认为 “info”，可以参考 &lt;a class="link" href="https://github.com/dani-garcia/bitwarden_rs/wiki/Logging" target="_blank" rel="noopener"
 >bitwarden_rs wiki&lt;/a> 更改日志级别。&lt;/p>
 &lt;p>如果想要开启&lt;strong>管理页面&lt;/strong>添加环境变量:ADMIN_TOKEN=token str&lt;/p>
-&lt;p>环境变量添加完成点击保存,点击右上角的启动。&lt;/p></description></item><item><title>Nginx生成自签名证书</title><link>https://blog.binggao.xyz/p/nginx-openssl-self-signed-certificate/</link><pubDate>Thu, 09 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/nginx-openssl-self-signed-certificate/</guid><description>&lt;img src="https://blog.binggao.xyz/img/nginx.jpg" alt="Featured image of post Nginx生成自签名证书" />&lt;h1 id="nginx生成自签名证书">
+&lt;p>环境变量添加完成点击保存，点击右上角的启动。&lt;/p></description></item><item><title>Nginx生成自签名证书</title><link>https://blog.binggao.xyz/p/nginx-openssl-self-signed-certificate/</link><pubDate>Thu, 09 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/nginx-openssl-self-signed-certificate/</guid><description>&lt;img src="https://blog.binggao.xyz/img/nginx.jpg" alt="Featured image of post Nginx生成自签名证书" />&lt;h1 id="nginx生成自签名证书">
 &lt;a href="#nginx%e7%94%9f%e6%88%90%e8%87%aa%e7%ad%be%e5%90%8d%e8%af%81%e4%b9%a6">#&lt;/a>
 Nginx生成自签名证书
 &lt;/h1>&lt;h1 id="一生成根证书私钥和根证书">

@@ -93,7 +93,7 @@ data-flex-basis="499px"
 日志级别默认为 “info”，可以参考 &lt;a class="link" href="https://github.com/dani-garcia/bitwarden_rs/wiki/Logging" target="_blank" rel="noopener"
 >bitwarden_rs wiki&lt;/a> 更改日志级别。&lt;/p>
 &lt;p>如果想要开启&lt;strong>管理页面&lt;/strong>添加环境变量:ADMIN_TOKEN=token str&lt;/p>
-&lt;p>环境变量添加完成点击保存,点击右上角的启动。&lt;/p></description></item><item><title>Docker安装密码管理器Vaultwarden</title><link>https://blog.binggao.xyz/p/docker-vaultwarden/</link><pubDate>Wed, 08 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/docker-vaultwarden/</guid><description>&lt;img src="https://blog.binggao.xyz/img/docker.jpg" alt="Featured image of post Docker安装密码管理器Vaultwarden" />&lt;h1 id="一docker安装密码管理器vaultwarden">
+&lt;p>环境变量添加完成点击保存，点击右上角的启动。&lt;/p></description></item><item><title>Docker安装密码管理器Vaultwarden</title><link>https://blog.binggao.xyz/p/docker-vaultwarden/</link><pubDate>Wed, 08 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/docker-vaultwarden/</guid><description>&lt;img src="https://blog.binggao.xyz/img/docker.jpg" alt="Featured image of post Docker安装密码管理器Vaultwarden" />&lt;h1 id="一docker安装密码管理器vaultwarden">
 &lt;a href="#%e4%b8%80docker%e5%ae%89%e8%a3%85%e5%af%86%e7%a0%81%e7%ae%a1%e7%90%86%e5%99%a8vaultwarden">#&lt;/a>
 一、Docker安装密码管理器Vaultwarden
 &lt;/h1>&lt;h2 id="11-创建专用网络">
