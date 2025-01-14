@@ -1,4 +1,99 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>自签名证书 on 半夜酒的博客</title><link>https://blog.binggao.xyz/tags/%E8%87%AA%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6/</link><description>Recent content in 自签名证书 on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>半夜酒</copyright><lastBuildDate>Thu, 09 May 2024 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/tags/%E8%87%AA%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx生成自签名证书</title><link>https://blog.binggao.xyz/p/nginx-openssl-self-signed-certificate/</link><pubDate>Thu, 09 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/nginx-openssl-self-signed-certificate/</guid><description>&lt;img src="https://blog.binggao.xyz/img/nginx.jpg" alt="Featured image of post Nginx生成自签名证书" />&lt;h1 id="nginx生成自签名证书">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>自签名证书 on 半夜酒的博客</title><link>https://blog.binggao.xyz/tags/%E8%87%AA%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6/</link><description>Recent content in 自签名证书 on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>半夜酒</copyright><lastBuildDate>Thu, 12 Dec 2024 08:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/tags/%E8%87%AA%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6/index.xml" rel="self" type="application/rss+xml"/><item><title>群晖安装密码库Vaultwarden</title><link>https://blog.binggao.xyz/p/synology-vaultwarden/</link><pubDate>Thu, 12 Dec 2024 08:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/synology-vaultwarden/</guid><description>&lt;img src="https://blog.binggao.xyz/img/synology.jpg" alt="Featured image of post 群晖安装密码库Vaultwarden" />&lt;h1 id="群晖安装密码库vaultwarden">
+&lt;a href="#%e7%be%a4%e6%99%96%e5%ae%89%e8%a3%85%e5%af%86%e7%a0%81%e5%ba%93vaultwarden">#&lt;/a>
+群晖安装密码库Vaultwarden
+&lt;/h1>&lt;h1 id="一安装">
+&lt;a href="#%e4%b8%80%e5%ae%89%e8%a3%85">#&lt;/a>
+一、安装
+&lt;/h1>&lt;p>打开群晖的【Container Manager】或者是【Docker】，搜索vaultwarden，选择第一个vaultwarden/server镜像进行下载&lt;/p>
+&lt;p>&lt;img src="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211203492.png"
+width="1372"
+height="786"
+srcset="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211203492_hub7d13479bdbae2d0d48ff6b8876dd8d4_188839_480x0_resize_box_3.png 480w, https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211203492_hub7d13479bdbae2d0d48ff6b8876dd8d4_188839_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="image-20241211211203492"
+class="gallery-image"
+data-flex-grow="174"
+data-flex-basis="418px"
+>&lt;/p>
+&lt;p>在等待下载过程中，先创建好 vaultwarden 数据存放的目录。在File Station里的docker中创建好 vaultwarden 文件夹，并在里面新建data文件夹 。其实这里在根目录新建vaultwarden 文件夹或在其他文件夹里建vaultwarden都不影响。看各位喜好。名称不用vaultwarden也可以。&lt;/p>
+&lt;p>&lt;img src="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211334137.png"
+width="1421"
+height="731"
+srcset="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211334137_hu95f1311565f6cc31baec77def515424a_283633_480x0_resize_box_3.png 480w, https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211334137_hu95f1311565f6cc31baec77def515424a_283633_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="image-20241211211334137"
+class="gallery-image"
+data-flex-grow="194"
+data-flex-basis="466px"
+>&lt;/p>
+&lt;p>回到Container Manager或者Docker套件，运行刚刚下载好的vaultwarden镜像，启用自动重新启动打勾。每次重启群晖后不用手动启动容器里项目。&lt;/p>
+&lt;p>&lt;img src="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211439118.png"
+width="834"
+height="602"
+srcset="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211439118_hu9826840047e7e95b90e7a12efbce4e3f_119428_480x0_resize_box_3.png 480w, https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211439118_hu9826840047e7e95b90e7a12efbce4e3f_119428_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="image-20241211211439118"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="332px"
+>&lt;/p>
+&lt;p>点击下一步&lt;/p>
+&lt;p>&lt;img src="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211516488.png"
+width="1221"
+height="722"
+srcset="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211516488_hu2c3a2fa9331f3edd8093108362878567_78973_480x0_resize_box_3.png 480w, https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211516488_hu2c3a2fa9331f3edd8093108362878567_78973_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="image-20241211211516488"
+class="gallery-image"
+data-flex-grow="169"
+data-flex-basis="405px"
+>&lt;/p>
+&lt;p>点击添加文件夹。选择你刚才新建的 vaultwarden 文件夹下的data文件夹。&lt;/p>
+&lt;p>&lt;img src="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211558951.png"
+width="1442"
+height="753"
+srcset="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211558951_hu4e10518198af7a72a80abf2d950b2656_260117_480x0_resize_box_3.png 480w, https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211558951_hu4e10518198af7a72a80abf2d950b2656_260117_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="image-20241211211558951"
+class="gallery-image"
+data-flex-grow="191"
+data-flex-basis="459px"
+>&lt;/p>
+&lt;p>在后面的红框里输入 /data&lt;/p>
+&lt;p>&lt;img src="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211631061.png"
+width="799"
+height="177"
+srcset="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211631061_hud8cfa739a81a55a8fb80eb4101ad627a_68259_480x0_resize_box_3.png 480w, https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211211631061_hud8cfa739a81a55a8fb80eb4101ad627a_68259_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="image-20241211211631061"
+class="gallery-image"
+data-flex-grow="451"
+data-flex-basis="1083px"
+>&lt;/p>
+&lt;p>其他都不要改动。点击下一步。点完成。&lt;/p>
+&lt;p>现在可以通过群晖IP地址加刚刚的端口访问你的密码库了。因为Bitwarden限制，不能使http登陆Bitwarden密码库。所以要设置反向代理通过https访问。&lt;/p>
+&lt;h1 id="二设置">
+&lt;a href="#%e4%ba%8c%e8%ae%be%e7%bd%ae">#&lt;/a>
+二、设置
+&lt;/h1>&lt;p>停止容器，然后点击编辑，然后点击高级设置&lt;/p>
+&lt;p>&lt;img src="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211212009678.png"
+width="2560"
+height="1229"
+srcset="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211212009678_hu2ae552b583ac603ec905610974744ea2_3146916_480x0_resize_box_3.png 480w, https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211212009678_hu2ae552b583ac603ec905610974744ea2_3146916_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="image-20241211212009678"
+class="gallery-image"
+data-flex-grow="208"
+data-flex-basis="499px"
+>&lt;/p>
+&lt;p>往下拉找到环境，点新增。&lt;/p>
+&lt;p>禁用新用户注册添加环境变量 SIGNUPS_ALLOWED=false
+&lt;strong>禁用邀请&lt;/strong>添加环境变量 INVITATIONS_ALLOWED=false
+&lt;strong>启用日志记录&lt;/strong>添加环境变量 LOG_FILE=/data/bitwarden.log
+日志级别默认为 “info”，可以参考 &lt;a class="link" href="https://github.com/dani-garcia/bitwarden_rs/wiki/Logging" target="_blank" rel="noopener"
+>bitwarden_rs wiki&lt;/a> 更改日志级别。&lt;/p>
+&lt;p>如果想要开启&lt;strong>管理页面&lt;/strong>添加环境变量:ADMIN_TOKEN=token str&lt;/p>
+&lt;p>环境变量添加完成点击保存,点击右上角的启动。&lt;/p></description></item><item><title>Nginx生成自签名证书</title><link>https://blog.binggao.xyz/p/nginx-openssl-self-signed-certificate/</link><pubDate>Thu, 09 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/nginx-openssl-self-signed-certificate/</guid><description>&lt;img src="https://blog.binggao.xyz/img/nginx.jpg" alt="Featured image of post Nginx生成自签名证书" />&lt;h1 id="nginx生成自签名证书">
 &lt;a href="#nginx%e7%94%9f%e6%88%90%e8%87%aa%e7%ad%be%e5%90%8d%e8%af%81%e4%b9%a6">#&lt;/a>
 Nginx生成自签名证书
 &lt;/h1>&lt;h1 id="一生成根证书私钥和根证书">
