@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IPV6 on 半夜酒的博客</title><link>https://blog.binggao.xyz/tags/ipv6/</link><description>Recent content in IPV6 on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>半夜酒</copyright><lastBuildDate>Thu, 16 Jan 2025 08:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/tags/ipv6/index.xml" rel="self" type="application/rss+xml"/><item><title>PVE-IKuai-Openwrt-IPV6-家庭网络</title><link>https://blog.binggao.xyz/p/pve-ikuai-openwrt-ipv6/</link><pubDate>Thu, 16 Jan 2025 08:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/pve-ikuai-openwrt-ipv6/</guid><description>&lt;img src="https://blog.binggao.xyz/img/network.jpg" alt="Featured image of post PVE-IKuai-Openwrt-IPV6-家庭网络" />&lt;h1 id="pve-ikuai-openwrt-旁路由">
+&lt;a href="#pve-ikuai-openwrt-%e6%97%81%e8%b7%af%e7%94%b1">#&lt;/a>
+PVE-IKuai-openwrt-旁路由
+&lt;/h1>&lt;h1 id="pve-安装设置">
+&lt;a href="#pve-%e5%ae%89%e8%a3%85%e8%ae%be%e7%bd%ae">#&lt;/a>
+PVE 安装设置
+&lt;/h1>&lt;h2 id="1-下载安装镜像并安装">
+&lt;a href="#1-%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85%e9%95%9c%e5%83%8f%e5%b9%b6%e5%ae%89%e8%a3%85">#&lt;/a>
+1. 下载安装镜像并安装
+&lt;/h2>&lt;p>下载地址1：https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso/proxmox-ve-7-4-iso-installer&lt;/p>
+&lt;p>下载地址2：http://download.proxmox.com/iso/&lt;/p>
+&lt;p>使用rufus制作启动盘,下载地址：https://rufus.ie/zh/&lt;/p>
+&lt;h2 id="2-安装完成设置">
+&lt;a href="#2-%e5%ae%89%e8%a3%85%e5%ae%8c%e6%88%90%e8%ae%be%e7%bd%ae">#&lt;/a>
+2. 安装完成设置
+&lt;/h2>&lt;p>安装完成后进入&lt;code>https://ip地址:8006&lt;/code>进入PVE后台地址&lt;/p>
+&lt;h3 id="21-设置pve直通特性功能">
+&lt;a href="#21-%e8%ae%be%e7%bd%aepve%e7%9b%b4%e9%80%9a%e7%89%b9%e6%80%a7%e5%8a%9f%e8%83%bd">#&lt;/a>
+2.1 设置PVE直通特性功能
+&lt;/h3>&lt;blockquote>
+&lt;p>Intel CPU&lt;/p>
+&lt;/blockquote>
+&lt;p>shell里面输入命令：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">vim /etc/default/grub
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在里面找到：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">GRUB_CMDLINE_LINUX_DEFAULT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;quiet&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后修改为&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">GRUB_CMDLINE_LINUX_DEFAULT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;quiet intel_iommu=on&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在更新一下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">update-grub
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>AMD CPU&lt;/p>
+&lt;/blockquote>
+&lt;p>shell里面输入命令：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">vim /etc/default/grub
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在里面找到：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">GRUB_CMDLINE_LINUX_DEFAULT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;quiet&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后修改为&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">GRUB_CMDLINE_LINUX_DEFAULT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;quiet amd_iommu=on&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在更新一下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">update-grub
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>新增所需模块&lt;/p>
+&lt;/blockquote>
+&lt;p>修改文件/etc/modules,加入如下的行&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">vim /etc/modules
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在里面填入&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vfio
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vfio_iommu_type1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vfio_pci
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vfio_virqfd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>执行命令来更新initramfs&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">update-initramfs -u -k all
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>重启PVE虚拟机&lt;/p>
+&lt;h1 id="ikuai-安装设置">
+&lt;a href="#ikuai-%e5%ae%89%e8%a3%85%e8%ae%be%e7%bd%ae">#&lt;/a>
+IKuai 安装设置
+&lt;/h1>&lt;h2 id="1-设置ikuai后台地址">
+&lt;a href="#1-%e8%ae%be%e7%bd%aeikuai%e5%90%8e%e5%8f%b0%e5%9c%b0%e5%9d%80">#&lt;/a>
+1. 设置ikuai后台地址
+&lt;/h2>&lt;p>输入2 进入设置WAN/LAN地址，然后再输入0 设置LAN1地址，设置ikuai后台地址,默认账户/密码：admin/admin&lt;/p>
+&lt;h2 id="2-进入ikuai设置网络信息">
+&lt;a href="#2-%e8%bf%9b%e5%85%a5ikuai%e8%ae%be%e7%bd%ae%e7%bd%91%e7%bb%9c%e4%bf%a1%e6%81%af">#&lt;/a>
+2. 进入ikuai设置网络信息
+&lt;/h2>&lt;ul>
+&lt;li>
+&lt;p>ikuai主界面，点击wan口,绑定对应网卡&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>网络设置-&amp;gt;内外网设置-&amp;gt;lan口进入-&amp;gt;高级设置-&amp;gt;扩展网卡-&amp;gt;将网卡绑定&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>网络设置-&amp;gt;DHCP设置-&amp;gt;DHCP服务器&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>192.168.66.29-192.168.66.99，网关填写iKuai地址（192.168.66.253）&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>192.168.66.100-192.168.66.199，网关填写旁路由（192.168.66.252）&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>想哪个设备走旁路由，就将此设备设置为静态ip（192.168.66.100 - 192.168.66.199之间）&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="3-ipv6设置">
+&lt;a href="#3-ipv6%e8%ae%be%e7%bd%ae">#&lt;/a>
+3. IPV6设置
+&lt;/h2>&lt;h1 id="openwrt">
+&lt;a href="#openwrt">#&lt;/a>
+OpenWrt
+&lt;/h1>&lt;h2 id="1-编译固件">
+&lt;a href="#1-%e7%bc%96%e8%af%91%e5%9b%ba%e4%bb%b6">#&lt;/a>
+1. 编译固件
+&lt;/h2>&lt;ul>
+&lt;li>
+&lt;p>进入网址https://firmware-selector.immortalwrt.org后选择系统架构和版本&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>预安装软件列表添加&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">luci-i18n-firewall-zh-cn luci-i18n-filebrowser-zh-cn luci-app-argon-config luci-i18n-argon-config-zh-cn luci-i18n-opkg-zh-cn luci-i18n-ttyd-zh-cn luci-i18n-passwall-zh-cn luci-app-openclash luci-i18n-homeproxy-zh-cn openssh-sftp-server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>精简版&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">luci-i18n-firewall-zh-cn luci-app-argon-config luci-i18n-argon-config-zh-cn luci-i18n-opkg-zh-cn luci-i18n-ttyd-zh-cn luci-i18n-passwall-zh-cn openssh-sftp-server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果不知道软件名称 可以在仓库搜索和查询，点击下方直达仓库搜索https://mirrors.vsean.net/openwrt/releases/23.05.4/packages/x86_64/luci/?sort=size&amp;amp;order=desc&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>首次启动时运行的脚本（uci-defaults）&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 设置默认wan口防火墙打开 方便虚拟机用户首次访问webui&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">uci &lt;span class="nb">set&lt;/span> firewall.@zone&lt;span class="o">[&lt;/span>1&lt;span class="o">]&lt;/span>.input&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;ACCEPT&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">uci commit firewall
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 设置主机名映射 解决安卓原生TV首次连不上网的问题&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">uci add dhcp domain
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">uci &lt;span class="nb">set&lt;/span> &lt;span class="s2">&amp;#34;dhcp.@domain[-1].name=time.android.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">uci &lt;span class="nb">set&lt;/span> &lt;span class="s2">&amp;#34;dhcp.@domain[-1].ip=203.107.6.88&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">uci commit dhcp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 根据网卡数量配置网络&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">count&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> iface in &lt;span class="k">$(&lt;/span>ls /sys/class/net &lt;span class="p">|&lt;/span> grep -v lo&lt;span class="k">)&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 检查是否有对应的设备，并且排除无线网卡&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> -e /sys/class/net/&lt;span class="nv">$iface&lt;/span>/device &lt;span class="o">]&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="o">[[&lt;/span> &lt;span class="nv">$iface&lt;/span> &lt;span class="o">==&lt;/span> eth* &lt;span class="o">||&lt;/span> &lt;span class="nv">$iface&lt;/span> &lt;span class="o">==&lt;/span> en* &lt;span class="o">]]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">count&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$((&lt;/span>count &lt;span class="o">+&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="k">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$count&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -eq &lt;span class="m">1&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 单个网卡，设置为 DHCP 模式&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> uci &lt;span class="nb">set&lt;/span> network.lan.proto&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;dhcp&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> uci commit network
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">elif&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$count&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -gt &lt;span class="m">1&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 多个网卡，保持静态 IP&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> uci &lt;span class="nb">set&lt;/span> network.lan.ipaddr&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;192.168.100.1&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> uci commit network
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>点击请求构建&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>选择&lt;code>COMBINED-EFI&lt;/code>镜像下载&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="2-固件img扩容">
+&lt;a href="#2-%e5%9b%ba%e4%bb%b6img%e6%89%a9%e5%ae%b9">#&lt;/a>
+2. 固件img扩容
+&lt;/h2>&lt;p>前提条件安装&lt;code>parted&lt;/code>软件&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">apt-get install parted -y
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>如果想增加2GB空间 则可用如下方法设置，遇到提示就按照要求输入Fix 和 OK&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 解压缩镜像文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gzip -kd immortalwrt.img.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 给img镜像末尾填充2GB空数据 (count=2000 表示增加 2GB 的空间)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dd &lt;span class="k">if&lt;/span>&lt;span class="o">=&lt;/span>/dev/zero &lt;span class="nv">bs&lt;/span>&lt;span class="o">=&lt;/span>1M &lt;span class="nv">count&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">2000&lt;/span> &amp;gt;&amp;gt; immortalwrt.img
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 为了将2GB空间真正赋予具体的分区，使用分区工具parted操作镜像。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted immortalwrt.img
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看分区情况（有提示&amp;#34;Error: The backup GPT table is corrupt, but the primary appears OK, so that will be used&amp;#34;输入OK回车）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 输入Fix&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 调整分区大小 (将第 2 个分区扩展至镜像文件的 100%)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">resizepart &lt;span class="m">2&lt;/span> 100%
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看是否扩展成功2412MB&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 退出分区工具&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">quit
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="3-更换软件源">
+&lt;a href="#3-%e6%9b%b4%e6%8d%a2%e8%bd%af%e4%bb%b6%e6%ba%90">#&lt;/a>
+3. 更换软件源
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">sed -e &lt;span class="s1">&amp;#39;s,https://downloads.immortalwrt.org,https://mirrors.cernet.edu.cn/immortalwrt,g&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -e &lt;span class="s1">&amp;#39;s,https://mirrors.vsean.net/openwrt,https://mirrors.cernet.edu.cn/immortalwrt,g&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -i.bak /etc/opkg/distfeeds.conf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="4-安装docker">
+&lt;a href="#4-%e5%ae%89%e8%a3%85docker">#&lt;/a>
+4. 安装docker
+&lt;/h2>&lt;p>确定软件包是有足够的空间的，如果你安装的是我扩容之后的固件，自然没问题。docker和相关组件可能占用1g&lt;/p>
+&lt;p>&lt;code>luci-i18n-dockerman-zh-cn&lt;/code>&lt;/p>
+&lt;p>上述名称是docker的名称。我们可以在软件包那里先更新列表，然后搜索该组件，并安装即可。比较大，需要好几分钟。&lt;/p>
+&lt;p>另外一个方法是采用命令行安装。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">opkg update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">opkg install luci-i18n-dockerman-zh-cn
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="5-pve-安装openwrt">
+&lt;a href="#5-pve-%e5%ae%89%e8%a3%85openwrt">#&lt;/a>
+5. PVE 安装Openwrt
+&lt;/h2>&lt;blockquote>
+&lt;p>正常创建虚拟机&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>操作系统选择-&amp;gt;不使用任何存储介质&lt;/li>
+&lt;li>CPU-&amp;gt;2核&lt;/li>
+&lt;li>内存2G&lt;/li>
+&lt;li>机型：Host&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>后续设置&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>将磁盘分离并删除&lt;/li>
+&lt;li>上传openwrt镜像，完成后复制上传路径或者在PVE下方任务找到&amp;quot;复制数据&amp;quot;，找到openwrt的上传路径并复制&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 转换openwrt的img文件为虚拟磁盘&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm importdisk &lt;span class="m">102&lt;/span> /var/lib/vz/template/iso/openwrt.img local-lvm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 以上代码102对应的为虚拟机， /var/lib/vz/template/iso/openwrt.img对应的是上传的路径&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>回到PVE中openwrt有个未使用磁盘-&amp;gt;总线设置为SATA&lt;/li>
+&lt;li>引导顺序调整到第一位并勾选上&lt;/li>
+&lt;li>开机更改IP地址为192.168.66.252，网关地址配置为IKuai地址192.168.66.253&lt;/li>
+&lt;/ul>
+&lt;h1 id="pve-特殊设置">
+&lt;a href="#pve-%e7%89%b9%e6%ae%8a%e8%ae%be%e7%bd%ae">#&lt;/a>
+PVE 特殊设置
+&lt;/h1>&lt;h2 id="1-网卡名称不显示">
+&lt;a href="#1-%e7%bd%91%e5%8d%a1%e5%90%8d%e7%a7%b0%e4%b8%8d%e6%98%be%e7%a4%ba">#&lt;/a>
+1. 网卡名称不显示
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">update-pciids
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
