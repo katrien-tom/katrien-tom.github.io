@@ -52,6 +52,11 @@ PVE 安装设置
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>执行命令来更新initramfs&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">update-initramfs -u -k all
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>重启PVE虚拟机&lt;/p>
+&lt;h3 id="22-直通硬盘设置">
+&lt;a href="#22-%e7%9b%b4%e9%80%9a%e7%a1%ac%e7%9b%98%e8%ae%be%e7%bd%ae">#&lt;/a>
+2.2 直通硬盘设置
+&lt;/h3>&lt;p>查看设备序列号：ls -l /dev/disk/by-id/&lt;/p>
+&lt;p>选择直通的硬盘(sata2根据磁盘多少来设置数字)：qm set 101 -sata2 /dev/disk/by-id/ata-ST1000121212-1234_1234&lt;/p>
 &lt;h1 id="ikuai-安装设置">
 &lt;a href="#ikuai-%e5%ae%89%e8%a3%85%e8%ae%be%e7%bd%ae">#&lt;/a>
 IKuai 安装设置

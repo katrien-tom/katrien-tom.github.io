@@ -52,6 +52,11 @@ PVE 安装设置
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>执行命令来更新initramfs&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">update-initramfs -u -k all
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>重启PVE虚拟机&lt;/p>
+&lt;h3 id="22-直通硬盘设置">
+&lt;a href="#22-%e7%9b%b4%e9%80%9a%e7%a1%ac%e7%9b%98%e8%ae%be%e7%bd%ae">#&lt;/a>
+2.2 直通硬盘设置
+&lt;/h3>&lt;p>查看设备序列号：ls -l /dev/disk/by-id/&lt;/p>
+&lt;p>选择直通的硬盘(sata2根据磁盘多少来设置数字)：qm set 101 -sata2 /dev/disk/by-id/ata-ST1000121212-1234_1234&lt;/p>
 &lt;h1 id="ikuai-安装设置">
 &lt;a href="#ikuai-%e5%ae%89%e8%a3%85%e8%ae%be%e7%bd%ae">#&lt;/a>
 IKuai 安装设置
@@ -289,25 +294,40 @@ data-flex-basis="1083px"
 &lt;h1 id="二设置">
 &lt;a href="#%e4%ba%8c%e8%ae%be%e7%bd%ae">#&lt;/a>
 二、设置
-&lt;/h1>&lt;p>停止容器，然后点击编辑，然后点击高级设置&lt;/p>
-&lt;p>&lt;img src="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211212009678.png"
-width="2560"
-height="1229"
-srcset="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211212009678_hu2ae552b583ac603ec905610974744ea2_3146916_480x0_resize_box_3.png 480w, https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20241211212009678_hu2ae552b583ac603ec905610974744ea2_3146916_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="image-20241211212009678"
-class="gallery-image"
-data-flex-grow="208"
-data-flex-basis="499px"
->&lt;/p>
-&lt;p>往下拉找到环境，点新增。&lt;/p>
-&lt;p>禁用新用户注册添加环境变量 SIGNUPS_ALLOWED=false
+&lt;/h1>&lt;p>停止容器，然后点击&lt;code>编辑&lt;/code>，然后点击&lt;code>高级设置&lt;/code>&lt;/p>
+&lt;p>往下拉找到环境，点新增。
+&lt;strong>禁用密码提示&lt;/strong>添加环境变量 SHOW_PASSWORD_HINT=false
+&lt;strong>禁用web管理页面&lt;/strong>添加环境变量 WEB_VAULT_ENABLED=false
+&lt;strong>禁用新用户注册&lt;/strong>添加环境变量 SIGNUPS_ALLOWED=false
 &lt;strong>禁用邀请&lt;/strong>添加环境变量 INVITATIONS_ALLOWED=false
 &lt;strong>启用日志记录&lt;/strong>添加环境变量 LOG_FILE=/data/bitwarden.log
+&lt;strong>开启随机路径&lt;/strong>添加环境变量 DOMAIN=https://二级域名:端口(cloudflare支持的端口)/随机路径
 日志级别默认为 “info”，可以参考 &lt;a class="link" href="https://github.com/dani-garcia/bitwarden_rs/wiki/Logging" target="_blank" rel="noopener"
 >bitwarden_rs wiki&lt;/a> 更改日志级别。&lt;/p>
 &lt;p>如果想要开启&lt;strong>管理页面&lt;/strong>添加环境变量:ADMIN_TOKEN=token str&lt;/p>
-&lt;p>环境变量添加完成点击保存，点击右上角的启动。&lt;/p></description></item><item><title>MySQL基础知识</title><link>https://blog.binggao.xyz/p/mysql-basic/</link><pubDate>Tue, 18 Jun 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/mysql-basic/</guid><description>&lt;img src="https://blog.binggao.xyz/img/mysql.jpg" alt="Featured image of post MySQL基础知识" />&lt;h1 id="mysql基础知识">
+&lt;p>环境变量添加完成点击保存，点击右上角的启动。&lt;/p>
+&lt;h1 id="三cloudflare设置">
+&lt;a href="#%e4%b8%89cloudflare%e8%ae%be%e7%bd%ae">#&lt;/a>
+三、Cloudflare设置
+&lt;/h1>&lt;blockquote>
+&lt;p>去掉端口访问&lt;/p>
+&lt;/blockquote>
+&lt;p>进入相应的域名页面，点击左侧&lt;code>规则&lt;/code>,然后点击&lt;code>Create rule&lt;/code>,选择&lt;code>产品选项卡&lt;/code>创建&lt;code>Origin Rules&lt;/code>规则，填写名称后选择&lt;code>自定义筛选表达式&lt;/code>,字段：主机名、运算符：等于、值：对应的二级域名。目标端口（必须是Cloudflare支持的端口）例TLS端口：443、2083、8443等，放置位置-》选择顺序为&lt;code>第一个&lt;/code>&lt;/p>
+&lt;blockquote>
+&lt;p>Cloudflare中WAF安全设置&lt;/p>
+&lt;/blockquote>
+&lt;p>点击右侧&lt;code>安全性&lt;/code>，点击&lt;code>WAF&lt;/code>，自定义规则（选择区域锁定模板）-》&lt;code>创建规则&lt;/code>设置以下内容:&lt;/p>
+&lt;p>&lt;img src="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20250120210759626.png"
+width="2070"
+height="1029"
+srcset="https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20250120210759626_hu02f54c3d5c4b958793626ce4382fe480_63559_480x0_resize_box_3.png 480w, https://blog.binggao.xyz/p/synology-vaultwarden/assets/image-20250120210759626_hu02f54c3d5c4b958793626ce4382fe480_63559_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="image-20250120210759626"
+class="gallery-image"
+data-flex-grow="201"
+data-flex-basis="482px"
+>&lt;/p>
+&lt;p>点击&lt;code>管理列表&lt;/code>设置白名单&lt;/p></description></item><item><title>MySQL基础知识</title><link>https://blog.binggao.xyz/p/mysql-basic/</link><pubDate>Tue, 18 Jun 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/mysql-basic/</guid><description>&lt;img src="https://blog.binggao.xyz/img/mysql.jpg" alt="Featured image of post MySQL基础知识" />&lt;h1 id="mysql基础知识">
 &lt;a href="#mysql%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86">#&lt;/a>
 MySQL基础知识
 &lt;/h1>&lt;h1 id="1-sql语言的分类">
