@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>设计模式 on 半夜酒的博客</title><link>https://blog.binggao.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link><description>Recent content in 设计模式 on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>半夜酒</copyright><lastBuildDate>Thu, 08 May 2025 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>Design Pattern</title><link>https://blog.binggao.xyz/post/designpattern/docker-vaultwarden/</link><pubDate>Thu, 08 May 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/post/designpattern/docker-vaultwarden/</guid><description>&lt;h1 id="设计模式"&gt;设计模式
-&lt;/h1&gt;&lt;p&gt;&lt;img alt="1" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>设计模式 on 半夜酒的博客</title><link>https://blog.binggao.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link><description>Recent content in 设计模式 on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>半夜酒</copyright><lastBuildDate>Thu, 08 May 2025 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>Design Pattern</title><link>https://blog.binggao.xyz/post/docker-vaultwarden/</link><pubDate>Thu, 08 May 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/post/docker-vaultwarden/</guid><description>&lt;h1 id="设计模式"&gt;设计模式
+&lt;/h1&gt;&lt;p&gt;&lt;img alt="1" class="gallery-image" data-flex-basis="130px" data-flex-grow="54" height="2730" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/docker-vaultwarden/assets/1.png" srcset="https://blog.binggao.xyz/post/docker-vaultwarden/assets/1_hu_29a39b4c36786286.png 800w, https://blog.binggao.xyz/post/docker-vaultwarden/assets/1.png 1484w" width="1484"&gt;&lt;/p&gt;
 &lt;h1 id="一uml图"&gt;一、UML图
 &lt;/h1&gt;&lt;p&gt;​	统一建模语言（Unified Modeling Language，UML）是用来设计软件的可视化建模语言。它的特点是简单、统一、图形化、能表达软件设计中的动态与静态信息。&lt;/p&gt;
 &lt;p&gt;UML 从目标系统的不同角度出发，定义了用例图、类图、对象图、状态图、活动图、时序图、协作图、构件图、部署图等 9 种图。&lt;/p&gt;
@@ -13,7 +13,7 @@
 &lt;h2 id="13-类图表示法"&gt;1.3 类图表示法
 &lt;/h2&gt;&lt;h3 id="131-类的表示方式"&gt;1.3.1 类的表示方式
 &lt;/h3&gt;&lt;p&gt;​	在UML类图中，类使用包含类名、属性(field) 和方法(method) 且带有分割线的矩形来表示，比如下图表示一个Employee类，它包含name,age和address这3个属性，以及work()方法。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="image-20250507211829796" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250507211829796" class="gallery-image" data-flex-basis="425px" data-flex-grow="177" height="158" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/docker-vaultwarden/assets/image-20250507211829796.png" width="280"&gt;&lt;/p&gt;
 &lt;p&gt;属性/方法名称前加的加号和减号表示了这个属性/方法的可见性，UML类图中表示可见性的符号有三种：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -36,7 +36,7 @@
 
  &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;举个栗子：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="gallery-image" data-flex-basis="386px" data-flex-grow="160" height="174" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/docker-vaultwarden/assets/demo.png" width="280"&gt;&lt;/p&gt;
 &lt;p&gt;上图Demo类定义了三个方法：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;method()方法：修饰符为public，没有参数，没有返回值。&lt;/li&gt;
@@ -48,14 +48,14 @@
 &lt;/h4&gt;&lt;p&gt;关联关系是对象之间的一种引用关系，用于表示一类对象与另一类对象之间的联系，如老师和学生、师傅和徒弟、丈夫和妻子等。关联关系是类与类之间最常用的一种关系，分为一般关联关系、聚合关系和组合关系。我们先介绍一般关联。&lt;/p&gt;
 &lt;p&gt;关联又可以分为单向关联，双向关联，自关联。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1，单向关联&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="gallery-image" data-flex-basis="1134px" data-flex-grow="472" height="140" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/docker-vaultwarden/assets/customer_address.png" width="662"&gt;&lt;/p&gt;
 &lt;p&gt;在UML类图中单向关联用一个带箭头的实线表示。上图表示每个顾客都有一个地址，这通过让Customer类持有一个类型为Address的成员变量类实现。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2，双向关联&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="gallery-image" data-flex-basis="1134px" data-flex-grow="472" height="140" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/docker-vaultwarden/assets/customer_product.png" width="662"&gt;&lt;/p&gt;
 &lt;p&gt;从上图中我们很容易看出，所谓的双向关联就是双方各自持有对方类型的成员变量。&lt;/p&gt;
 &lt;p&gt;在UML类图中，双向关联用一个不带箭头的直线表示。上图中在Customer类中维护一个List&amp;lt;Product&amp;gt;，表示一个顾客可以购买多个商品；在Product类中维护一个Customer类型的成员变量表示这个产品被哪个顾客所购买。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3，自关联&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="gallery-image" data-flex-basis="531px" data-flex-grow="221" height="140" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/docker-vaultwarden/assets/node.png" width="310"&gt;&lt;/p&gt;
 &lt;p&gt;自关联在UML类图中用一个带有箭头且指向自身的线表示。上图的意思就是Node类包含类型为Node的成员变量，也就是“自己包含自己”。&lt;/p&gt;
 &lt;h4 id="1322-聚合关系"&gt;1.3.2.2 聚合关系
 &lt;/h4&gt;&lt;p&gt;​	聚合关系是关联关系的一种，是强关联关系，是整体和部分之间的关系。&lt;/p&gt;
@@ -66,19 +66,19 @@
 &lt;/h4&gt;&lt;p&gt;​	组合表示类之间的整体与部分的关系，但它是一种更强烈的聚合关系。&lt;/p&gt;
 &lt;p&gt;在组合关系中，整体对象可以控制部分对象的生命周期，一旦整体对象不存在，部分对象也将不存在，部分对象不能脱离整体对象而存在。例如，头和嘴的关系，没有了头，嘴也就不存在了。&lt;/p&gt;
 &lt;p&gt;​	在 UML 类图中，组合关系用带实心菱形的实线来表示，菱形指向整体。下图所示是头和嘴的关系图：&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="gallery-image" data-flex-basis="1255px" data-flex-grow="523" height="121" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/docker-vaultwarden/assets/image-20191229173455149.png" width="633"&gt;&lt;/p&gt;
 &lt;h4 id="1324-依赖关系"&gt;1.3.2.4 依赖关系
 &lt;/h4&gt;&lt;p&gt;依赖关系是一种使用关系，它是对象之间耦合度最弱的一种关联方式，是临时性的关联。在代码中，某个类的方法通过局部变量、方法的参数或者对静态方法的调用来访问另一个类（被依赖类）中的某些方法来完成一些职责。&lt;/p&gt;
 &lt;p&gt;在 UML 类图中，依赖关系使用带箭头的虚线来表示，箭头从使用类指向被依赖的类。下图所示是司机和汽车的关系图，司机驾驶汽车：&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="gallery-image" data-flex-basis="527px" data-flex-grow="219" height="280" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/docker-vaultwarden/assets/image-20191229173518926.png" width="615"&gt;&lt;/p&gt;
 &lt;h4 id="1325-继承关系"&gt;1.3.2.5 继承关系
 &lt;/h4&gt;&lt;p&gt;继承关系是对象之间耦合度最大的一种关系，表示一般与特殊的关系，是父类与子类之间的关系，是一种继承关系。&lt;/p&gt;
 &lt;p&gt;在 UML 类图中，泛化关系用带空心三角箭头的实线来表示，箭头从子类指向父类。在代码实现时，使用面向对象的继承机制来实现泛化关系。例如，Student 类和 Teacher 类都是 Person 类的子类，其类图如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="gallery-image" data-flex-basis="540px" data-flex-grow="225" height="288" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/docker-vaultwarden/assets/image-20191229173539838.png" width="648"&gt;&lt;/p&gt;
 &lt;h4 id="1326-实现关系"&gt;1.3.2.6 实现关系
 &lt;/h4&gt;&lt;p&gt;实现关系是接口与实现类之间的关系。在这种关系中，类实现了接口，类中的操作实现了接口中所声明的所有的抽象操作。&lt;/p&gt;
 &lt;p&gt;在 UML 类图中，实现关系使用带空心三角箭头的虚线来表示，箭头从实现类指向接口。例如，汽车和船实现了交通工具，其类图如图 9 所示。&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="gallery-image" data-flex-basis="633px" data-flex-grow="263" height="243" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/docker-vaultwarden/assets/image-20191229173554296.png" width="641"&gt;&lt;/p&gt;
 &lt;h1 id="二软件设计七大原则"&gt;二、软件设计七大原则
 &lt;/h1&gt;&lt;h2 id="1-单一职责原则simple-responsibility-pinciplesrp"&gt;1. 单一职责原则（Simple Responsibility Pinciple，SRP）
 &lt;/h2&gt;&lt;h3 id="11-定义"&gt;1.1 定义

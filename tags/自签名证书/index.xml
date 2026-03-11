@@ -35,7 +35,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="六配置nginx"&gt;六、配置Nginx
 &lt;/h1&gt;&lt;p&gt;将上面生成的private.crt和private.key放在nginx下的ssl目录&lt;/p&gt;
 &lt;h1 id="七客户端安装根证书"&gt;七、客户端安装根证书
-&lt;/h1&gt;&lt;p&gt;把该证书CA-certificate.crt安装到受信任的根证书颁发机构下&lt;/p&gt;</description></item><item><title>Docker安装密码管理器Vaultwarden</title><link>https://blog.binggao.xyz/post/docker/docker-vaultwarden/docker-vaultwarden/</link><pubDate>Wed, 08 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/post/docker/docker-vaultwarden/docker-vaultwarden/</guid><description>&lt;h1 id="一docker安装密码管理器vaultwarden"&gt;一、Docker安装密码管理器Vaultwarden
+&lt;/h1&gt;&lt;p&gt;把该证书CA-certificate.crt安装到受信任的根证书颁发机构下&lt;/p&gt;</description></item><item><title>Docker安装密码管理器Vaultwarden</title><link>https://blog.binggao.xyz/post/docker/docker-vaultwarden/</link><pubDate>Wed, 08 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/post/docker/docker-vaultwarden/</guid><description>&lt;h1 id="一docker安装密码管理器vaultwarden"&gt;一、Docker安装密码管理器Vaultwarden
 &lt;/h1&gt;&lt;h2 id="11-创建专用网络"&gt;1.1 创建专用网络
 &lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker network create middleware
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="12-准备工作"&gt;1.2 准备工作
