@@ -1,1 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Wsl on 半夜酒的博客</title><link>https://blog.binggao.xyz/tags/wsl/</link><description>Recent content in Wsl on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>半夜酒</copyright><lastBuildDate>Fri, 31 Jan 2025 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/tags/wsl/index.xml" rel="self" type="application/rss+xml"/><item><title>WSL2相关配置</title><link>https://blog.binggao.xyz/p/wsl2/</link><pubDate>Fri, 31 Jan 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/wsl2/</guid><description>&lt;img src="https://blog.binggao.xyz/p/wsl2/assets/wsl.jpg" alt="Featured image of post WSL2相关配置" /></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Wsl on 半夜酒的博客</title><link>https://blog.binggao.xyz/tags/wsl/</link><description>Recent content in Wsl on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>半夜酒</copyright><lastBuildDate>Fri, 31 Jan 2025 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/tags/wsl/index.xml" rel="self" type="application/rss+xml"/><item><title>WSL2相关配置</title><link>https://blog.binggao.xyz/p/wsl2/</link><pubDate>Fri, 31 Jan 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/wsl2/</guid><description>&lt;img src="https://blog.binggao.xyz/p/wsl2/assets/wsl.jpg" alt="Featured image of post WSL2相关配置" />&lt;h1 id="wsl2-相关配置">
+&lt;a href="#wsl2-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae">#&lt;/a>
+WSL2 相关配置
+&lt;/h1>&lt;blockquote>
+&lt;p>.wslconfig&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>wsl2&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 处理器核心数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">processors&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 最大运行内存&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">memory&lt;/span>&lt;span class="o">=&lt;/span>4GB
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 交换分区大小&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">swap&lt;/span>&lt;span class="o">=&lt;/span>8GB
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>experimental&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># WSL2 虚拟机内存自动回收策略，主动回收页缓存等系统缓存，回收力度强于gradual（默认值）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">autoMemoryReclaim&lt;/span>&lt;span class="o">=&lt;/span>dropCache
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>/etc/wsl.conf&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>boot&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 开启WSL2的Systemd服务管理&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">systemd&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nb">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>interop&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 禁止将Windows宿主机的PATH路径追加到WSL2中&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">appendWindowsPath&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nb">false&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>手动安装Ubuntu设置默认用户&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;[user]\ndefault=banyejiu&amp;#34;&lt;/span> &amp;gt; /etc/wsl.conf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
