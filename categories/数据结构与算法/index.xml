@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据结构与算法 on 半夜酒的博客</title><link>https://blog.binggao.xyz/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link><description>Recent content in 数据结构与算法 on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-ch</language><copyright>半夜酒</copyright><lastBuildDate>Sun, 18 May 2025 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml"/><item><title>数据结构与算法</title><link>https://blog.binggao.xyz/p/data-structures-and-algorithms/</link><pubDate>Sun, 18 May 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/data-structures-and-algorithms/</guid><description>&lt;h1 id="data-structures-and-algorithms"&gt;Data structures and algorithms
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据结构与算法 on 半夜酒的博客</title><link>https://blog.binggao.xyz/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link><description>Recent content in 数据结构与算法 on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-ch</language><copyright>半夜酒</copyright><lastBuildDate>Sun, 18 May 2025 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml"/><item><title>数据结构与算法</title><link>https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/</link><pubDate>Sun, 18 May 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/</guid><description>&lt;h1 id="data-structures-and-algorithms"&gt;Data structures and algorithms
 &lt;/h1&gt;&lt;h2 id="1-二分查找"&gt;1. 二分查找
 &lt;/h2&gt;&lt;h3 id="11-二分查找"&gt;1.1 二分查找
 &lt;/h3&gt;
@@ -713,7 +713,7 @@
 &lt;li&gt;&lt;strong&gt;0&lt;/strong&gt; 表示两个集合没有任何交集&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;它特别适合用来比较“集合型数据”的相似性，比如关键词集合、标签集合、用户兴趣集合等。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="image-20250813205735896" class="gallery-image" data-flex-basis="291px" data-flex-grow="121" height="857" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813205735896.png" srcset="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813205735896_hu_b4a30ea71e12eb5d.png 800w, https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813205735896.png 1041w" width="1041"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250813205735896" class="gallery-image" data-flex-basis="291px" data-flex-grow="121" height="857" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813205735896.png" srcset="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813205735896_hu_b4a30ea71e12eb5d.png 800w, https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813205735896.png 1041w" width="1041"&gt;&lt;/p&gt;
 
  &lt;blockquote&gt;
  &lt;p&gt;应用场景&lt;/p&gt;
@@ -748,7 +748,7 @@
 
  &lt;/blockquote&gt;
 &lt;p&gt;有时需要“差异度”而不是“相似度”，可以用 Jaccard 距离：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="image-20250813205858847" class="gallery-image" data-flex-basis="1192px" data-flex-grow="497" height="68" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813205858847.png" width="338"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250813205858847" class="gallery-image" data-flex-basis="1192px" data-flex-grow="497" height="68" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813205858847.png" width="338"&gt;&lt;/p&gt;
 &lt;p&gt;越接近 &lt;strong&gt;0&lt;/strong&gt; 表示越相似，越接近 &lt;strong&gt;1&lt;/strong&gt; 表示越不同。&lt;/p&gt;
 
  &lt;blockquote&gt;
@@ -881,21 +881,21 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;最佳情况（每次平均分割）&lt;/strong&gt;
 每次分成两半，递归深度为 log₂n，且每一层的比较次数是 O(n)：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="image-20250813211233018" class="gallery-image" data-flex-basis="677px" data-flex-grow="282" height="45" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813211233018.png" width="127"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250813211233018" class="gallery-image" data-flex-basis="677px" data-flex-grow="282" height="45" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813211233018.png" width="127"&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;最坏情况（极端不平衡，如已排序数组+选第一个元素做 pivot）&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;每次只分出一个元素到一边，递归深度为 n：&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="image-20250813211254393" class="gallery-image" data-flex-basis="483px" data-flex-grow="201" height="68" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813211254393.png" width="137"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250813211254393" class="gallery-image" data-flex-basis="483px" data-flex-grow="201" height="68" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813211254393.png" width="137"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;平均情况&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;随机选择 pivot，大概率接近最佳情况：&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="image-20250813211315136" class="gallery-image" data-flex-basis="644px" data-flex-grow="268" height="60" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813211315136.png" width="161"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250813211315136" class="gallery-image" data-flex-basis="644px" data-flex-grow="268" height="60" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813211315136.png" width="161"&gt;&lt;/p&gt;
 &lt;h4 id="416-空间复杂度"&gt;4.1.6 空间复杂度
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;原地排序（只需递归栈空间）&lt;/li&gt;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Golang on 半夜酒的博客</title><link>https://blog.binggao.xyz/categories/golang/</link><description>Recent content in Golang on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-ch</language><copyright>半夜酒</copyright><lastBuildDate>Wed, 18 Jun 2025 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/categories/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang 进阶</title><link>https://blog.binggao.xyz/p/golang-advanced/</link><pubDate>Wed, 18 Jun 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/golang-advanced/</guid><description>&lt;h1 id="golang进阶"&gt;Golang进阶
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Golang on 半夜酒的博客</title><link>https://blog.binggao.xyz/categories/golang/</link><description>Recent content in Golang on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-ch</language><copyright>半夜酒</copyright><lastBuildDate>Wed, 18 Jun 2025 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/categories/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang 进阶</title><link>https://blog.binggao.xyz/post/golang/golang-advanced/</link><pubDate>Wed, 18 Jun 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/post/golang/golang-advanced/</guid><description>&lt;h1 id="golang进阶"&gt;Golang进阶
 &lt;/h1&gt;&lt;h2 id="1内存逃逸与垃圾回收"&gt;1.内存逃逸与垃圾回收
 &lt;/h2&gt;&lt;h3 id="11-内存逃逸escape-analysis"&gt;1.1 内存逃逸（Escape Analysis）
 &lt;/h3&gt;&lt;h4 id="111-什么是内存逃逸"&gt;1.1.1 什么是内存逃逸？
@@ -1431,7 +1431,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;		&lt;/span&gt;&lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;String&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;//正常的输出结果&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;	&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Golang基础知识</title><link>https://blog.binggao.xyz/p/golang-basic/</link><pubDate>Sun, 18 May 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/golang-basic/</guid><description>&lt;h1 id="golang基础"&gt;Golang基础
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Golang基础知识</title><link>https://blog.binggao.xyz/post/golang/golang-basic/</link><pubDate>Sun, 18 May 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/post/golang/golang-basic/</guid><description>&lt;h1 id="golang基础"&gt;Golang基础
 &lt;/h1&gt;&lt;h1 id="一基础相关"&gt;一、基础相关
 &lt;/h1&gt;&lt;h2 id="1-slice"&gt;1. Slice
 &lt;/h2&gt;&lt;h3 id="11-go-中切片的值语义和指针传递的场景"&gt;1.1 Go 中切片的值语义和指针传递的场景
@@ -2985,7 +2985,7 @@
  &lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;A&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;65&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Z&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;Excel列总数&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;16384&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>数据结构与算法</title><link>https://blog.binggao.xyz/p/data-structures-and-algorithms/</link><pubDate>Sun, 18 May 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/data-structures-and-algorithms/</guid><description>&lt;h1 id="data-structures-and-algorithms"&gt;Data structures and algorithms
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>数据结构与算法</title><link>https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/</link><pubDate>Sun, 18 May 2025 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/</guid><description>&lt;h1 id="data-structures-and-algorithms"&gt;Data structures and algorithms
 &lt;/h1&gt;&lt;h2 id="1-二分查找"&gt;1. 二分查找
 &lt;/h2&gt;&lt;h3 id="11-二分查找"&gt;1.1 二分查找
 &lt;/h3&gt;
@@ -3700,7 +3700,7 @@
 &lt;li&gt;&lt;strong&gt;0&lt;/strong&gt; 表示两个集合没有任何交集&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;它特别适合用来比较“集合型数据”的相似性，比如关键词集合、标签集合、用户兴趣集合等。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="image-20250813205735896" class="gallery-image" data-flex-basis="291px" data-flex-grow="121" height="857" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813205735896.png" srcset="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813205735896_hu_b4a30ea71e12eb5d.png 800w, https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813205735896.png 1041w" width="1041"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250813205735896" class="gallery-image" data-flex-basis="291px" data-flex-grow="121" height="857" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813205735896.png" srcset="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813205735896_hu_b4a30ea71e12eb5d.png 800w, https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813205735896.png 1041w" width="1041"&gt;&lt;/p&gt;
 
  &lt;blockquote&gt;
  &lt;p&gt;应用场景&lt;/p&gt;
@@ -3735,7 +3735,7 @@
 
  &lt;/blockquote&gt;
 &lt;p&gt;有时需要“差异度”而不是“相似度”，可以用 Jaccard 距离：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="image-20250813205858847" class="gallery-image" data-flex-basis="1192px" data-flex-grow="497" height="68" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813205858847.png" width="338"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250813205858847" class="gallery-image" data-flex-basis="1192px" data-flex-grow="497" height="68" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813205858847.png" width="338"&gt;&lt;/p&gt;
 &lt;p&gt;越接近 &lt;strong&gt;0&lt;/strong&gt; 表示越相似，越接近 &lt;strong&gt;1&lt;/strong&gt; 表示越不同。&lt;/p&gt;
 
  &lt;blockquote&gt;
@@ -3868,21 +3868,21 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;最佳情况（每次平均分割）&lt;/strong&gt;
 每次分成两半，递归深度为 log₂n，且每一层的比较次数是 O(n)：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="image-20250813211233018" class="gallery-image" data-flex-basis="677px" data-flex-grow="282" height="45" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813211233018.png" width="127"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250813211233018" class="gallery-image" data-flex-basis="677px" data-flex-grow="282" height="45" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813211233018.png" width="127"&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;最坏情况（极端不平衡，如已排序数组+选第一个元素做 pivot）&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;每次只分出一个元素到一边，递归深度为 n：&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="image-20250813211254393" class="gallery-image" data-flex-basis="483px" data-flex-grow="201" height="68" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813211254393.png" width="137"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250813211254393" class="gallery-image" data-flex-basis="483px" data-flex-grow="201" height="68" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813211254393.png" width="137"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;平均情况&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;随机选择 pivot，大概率接近最佳情况：&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="image-20250813211315136" class="gallery-image" data-flex-basis="644px" data-flex-grow="268" height="60" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/data-structures-and-algorithms/assets/image-20250813211315136.png" width="161"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image-20250813211315136" class="gallery-image" data-flex-basis="644px" data-flex-grow="268" height="60" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/data-structures-and-algorithms/assets/image-20250813211315136.png" width="161"&gt;&lt;/p&gt;
 &lt;h4 id="416-空间复杂度"&gt;4.1.6 空间复杂度
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;原地排序（只需递归栈空间）&lt;/li&gt;
@@ -5028,7 +5028,7 @@
 &lt;p&gt;🟢 Step 7：继续取堆顶直到堆空&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;小根堆: [8, 9] → [9] → []
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;结果集: &lt;code&gt;[1,2,3,4,5,6,7,8,9]&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;💡 可以看出：堆的作用就是&lt;strong&gt;始终保持当前最小候选元素在堆顶&lt;/strong&gt;，这样每次输出的序列就是有序的。&lt;/p&gt;</description></item><item><title>RPC和GRPC基础知识</title><link>https://blog.binggao.xyz/p/rpc-grpc-basic/</link><pubDate>Sat, 18 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/rpc-grpc-basic/</guid><description>&lt;h1 id="rpc和grpc基础知识"&gt;RPC和GRPC基础知识
+&lt;p&gt;💡 可以看出：堆的作用就是&lt;strong&gt;始终保持当前最小候选元素在堆顶&lt;/strong&gt;，这样每次输出的序列就是有序的。&lt;/p&gt;</description></item><item><title>RPC和GRPC基础知识</title><link>https://blog.binggao.xyz/post/golang/rpc-grpc-basic/</link><pubDate>Sat, 18 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/post/golang/rpc-grpc-basic/</guid><description>&lt;h1 id="rpc和grpc基础知识"&gt;RPC和GRPC基础知识
 &lt;/h1&gt;&lt;h1 id="一基础"&gt;一、基础
 &lt;/h1&gt;&lt;h2 id="11-概念"&gt;1.1 概念
 &lt;/h2&gt;&lt;ol&gt;
@@ -5143,7 +5143,7 @@
 &lt;li&gt;两台物理机器在网络中要建立稳定可靠的通信连接。&lt;/li&gt;
 &lt;li&gt;两台服务器的通信协议的定义问题，即两台服务器上的程序如何识别对方的请求和返回结果。也就是说两台计算机必须都能够识别对方发来的信息，并且能够识别出其中的请求含义和返回含义，然后才能进行处理。这其实就是通信协议所要完成的工作。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="1" class="gallery-image" data-flex-basis="398px" data-flex-grow="166" height="474" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/rpc-grpc-basic/assets/1.png" width="787"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1" class="gallery-image" data-flex-basis="398px" data-flex-grow="166" height="474" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/rpc-grpc-basic/assets/1.png" width="787"&gt;&lt;/p&gt;
 &lt;p&gt;在上述图中，通过1-10的步骤图解的形式，说明了RPC每一步的调用过程。具体描述为：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;1、客户端想要发起一个远程过程调用，首先通过调用本地客户端Stub程序的方式调用想要使用的功能方法名；&lt;/li&gt;

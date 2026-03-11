@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Grpc on 半夜酒的博客</title><link>https://blog.binggao.xyz/tags/grpc/</link><description>Recent content in Grpc on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-ch</language><copyright>半夜酒</copyright><lastBuildDate>Sat, 18 May 2024 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/tags/grpc/index.xml" rel="self" type="application/rss+xml"/><item><title>RPC和GRPC基础知识</title><link>https://blog.binggao.xyz/p/rpc-grpc-basic/</link><pubDate>Sat, 18 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/p/rpc-grpc-basic/</guid><description>&lt;h1 id="rpc和grpc基础知识"&gt;RPC和GRPC基础知识
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Grpc on 半夜酒的博客</title><link>https://blog.binggao.xyz/tags/grpc/</link><description>Recent content in Grpc on 半夜酒的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-ch</language><copyright>半夜酒</copyright><lastBuildDate>Sat, 18 May 2024 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.binggao.xyz/tags/grpc/index.xml" rel="self" type="application/rss+xml"/><item><title>RPC和GRPC基础知识</title><link>https://blog.binggao.xyz/post/golang/rpc-grpc-basic/</link><pubDate>Sat, 18 May 2024 17:00:00 +0800</pubDate><guid>https://blog.binggao.xyz/post/golang/rpc-grpc-basic/</guid><description>&lt;h1 id="rpc和grpc基础知识"&gt;RPC和GRPC基础知识
 &lt;/h1&gt;&lt;h1 id="一基础"&gt;一、基础
 &lt;/h1&gt;&lt;h2 id="11-概念"&gt;1.1 概念
 &lt;/h2&gt;&lt;ol&gt;
@@ -113,7 +113,7 @@
 &lt;li&gt;两台物理机器在网络中要建立稳定可靠的通信连接。&lt;/li&gt;
 &lt;li&gt;两台服务器的通信协议的定义问题，即两台服务器上的程序如何识别对方的请求和返回结果。也就是说两台计算机必须都能够识别对方发来的信息，并且能够识别出其中的请求含义和返回含义，然后才能进行处理。这其实就是通信协议所要完成的工作。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="1" class="gallery-image" data-flex-basis="398px" data-flex-grow="166" height="474" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/p/rpc-grpc-basic/assets/1.png" width="787"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1" class="gallery-image" data-flex-basis="398px" data-flex-grow="166" height="474" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://blog.binggao.xyz/post/golang/rpc-grpc-basic/assets/1.png" width="787"&gt;&lt;/p&gt;
 &lt;p&gt;在上述图中，通过1-10的步骤图解的形式，说明了RPC每一步的调用过程。具体描述为：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;1、客户端想要发起一个远程过程调用，首先通过调用本地客户端Stub程序的方式调用想要使用的功能方法名；&lt;/li&gt;
